@@ -3,7 +3,7 @@ import { Avatar, Center, Text } from 'native-base';
 
 import styles from './styles';
 import { TemplateButton } from '../../components';
-import { assets } from '../../libs/assets';
+import { assets } from '../../lib/assets';
 
 function Settings() {
   return (

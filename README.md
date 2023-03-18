@@ -20,14 +20,9 @@ npm start
 ```
 
 - Run project in virtual device
-  If use android device
+
+Use android device (I just config in android device. If you run in a ios device maybe you have error)
 
 ```
 npm run android
-```
-
-If use ios device
-
-```
-npm run ios
 ```

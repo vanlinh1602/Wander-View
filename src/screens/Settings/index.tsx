@@ -1,18 +1,32 @@
 import React from 'react';
-import { Avatar, Center, Text } from 'native-base';
+import { Avatar, Button, Center, Text, View } from 'native-base';
 
 import styles from './styles';
-import { TemplateButton } from '../../components';
 import { assets } from '../../lib/assets';
-
-function Settings() {
+import { connect } from 'react-redux';
+function Settings({ user, fetchUsers }: any) {
   return (
     <Center style={styles.container}>
       <Avatar source={assets.avatar} />
       <Text>Settins screen</Text>
-      <TemplateButton content="This is Button" />
+      <View>
+        <Text>{user.name}</Text>
+        <Text>{user.email}</Text>
+      </View>
+      <Button onPress={fetchUsers}>Fetch User</Button>
     </Center>
   );
 }
 
-export default Settings;
+const mapStateToProps = ({ user }: any) => ({
+  user: user.users,
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  fetchUsers: () =>
+    dispatch({
+      type: 'FETCH_USERS',
+    }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Settings);

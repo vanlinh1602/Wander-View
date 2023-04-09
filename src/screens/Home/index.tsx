@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
+  Button,
   Center,
   HStack,
   Heading,
@@ -10,6 +11,7 @@ import {
   VStack,
   useColorMode,
 } from 'native-base';
+import { post } from '../../services';
 // Color Switch Component
 function ToggleDarkMode() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -28,6 +30,7 @@ function ToggleDarkMode() {
   );
 }
 const Home = () => {
+  const [message, setMessage] = useState();
   return (
     <Center
       _dark={{ bg: 'blueGray.900' }}
@@ -52,6 +55,20 @@ const Home = () => {
             Learn NativeBase
           </Text>
         </Link>
+        <Text>{message}</Text>
+
+        <Button
+          onPress={async () => {
+            const data = {
+              name: 'Weather App',
+              email: 'weatherapp@gmail.com',
+            };
+            const result = await post('/api/user', data);
+
+            setMessage(result.message);
+          }}>
+          Call Backend
+        </Button>
         <ToggleDarkMode />
       </VStack>
     </Center>

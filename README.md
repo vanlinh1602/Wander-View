@@ -5,7 +5,7 @@
 - Using React Navite CLI [here](https://reactnative.dev/docs/environment-setup)
 - Using Android SDK Platform 33, please check and install before start
 
-#After start
+# After start
 
 - Get ip address to link with backend
 In the terminal run

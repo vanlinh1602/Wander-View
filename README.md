@@ -16,7 +16,7 @@ find IPv4 Address. See image below
 
 ![image](https://user-images.githubusercontent.com/81768181/230774518-3bbbdd4d-fed6-4f83-b157-0b5d4db9326f.png)
 
-copy IPv4 and replace value in `IP_ADDRESS` at `lib/configs.ts'
+copy IPv4 and replace value in `IP_ADDRESS` at `lib/configs.ts'`
 
 # Start Project
 

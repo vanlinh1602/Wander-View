@@ -34,7 +34,7 @@ const Home = () => {
   return (
     <Center
       _dark={{ bg: 'blueGray.900' }}
-      _light={{ bg: 'blueGray.50' }}
+      _light={{ bg: '#FCFBFE' }}
       px={4}
       flex={1}>
       <VStack space={5} alignItems="center">

@@ -1,77 +1,106 @@
-import React, { useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import {
-  Box,
-  Button,
-  Center,
-  HStack,
-  Heading,
-  Link,
-  Switch,
   Text,
+  View,
+  Image,
+  Flex,
   VStack,
-  useColorMode,
+  Divider,
+  Box,
+  Input,
+  ScrollView,
+
 } from 'native-base';
-import { post } from '../../services';
-// Color Switch Component
-function ToggleDarkMode() {
-  const { colorMode, toggleColorMode } = useColorMode();
-  return (
-    <HStack space={2} alignItems="center">
-      <Text>Dark</Text>
-      <Switch
-        isChecked={colorMode === 'light'}
-        onToggle={toggleColorMode}
-        aria-label={
-          colorMode === 'light' ? 'switch to dark mode' : 'switch to light mode'
-        }
-      />
-      <Text>Light</Text>
-    </HStack>
-  );
-}
+import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import AntIcon from "react-native-vector-icons/AntDesign";
+import EvilIcons from "react-native-vector-icons/EvilIcons"
+import Categories from '../../components/Categories';
+import FeaturedRow from '../../components/FeaturedRow';
+
 const Home = () => {
-  const [message, setMessage] = useState();
+  // const navigation= useNavigation();
+
+  // useLayoutEffect(() =>{
+  //   navigation.setOptions({
+
+  //   })
+  // },[])
+
+
   return (
-    <Center
-      _dark={{ bg: 'blueGray.900' }}
-      _light={{ bg: '#FCFBFE' }}
-      px={4}
-      flex={1}>
-      <VStack space={5} alignItems="center">
-        <Heading size="lg">Welcome to NativeBase</Heading>
-        <HStack space={2} alignItems="center">
-          <Text>Edit</Text>
-          <Box
-            px={2}
-            py={1}
-            _dark={{ bg: 'blueGray.800' }}
-            _light={{ bg: 'blueGray.200' }}>
-            App.js
-          </Box>
-          <Text>and save to reload.</Text>
-        </HStack>
-        <Link href="https://docs.nativebase.io" isExternal>
-          <Text color="primary.500" underline fontSize={'xl'}>
-            Learn NativeBase
-          </Text>
-        </Link>
-        <Text>{message}</Text>
+<SafeAreaView>
+  {/*Header*/}
+  <Flex  direction='row' safeAreaTop backgroundColor={"white"}>
 
-        <Button
-          onPress={async () => {
-            const data = {
-              name: 'Weather App',
-              email: 'weatherapp@gmail.com',
-            };
-            const result = await post('/api/user', data);
+    <View margin={2} flex={1}>
+      <Text fontWeight={'bold'} fontSize={22} color={"purple.700"}> Hello Kuma!</Text>
+      <Text fontWeight={'bold'} fontSize={16} color={"gray.400"}> Let's discover a new adventure </Text>
 
-            setMessage(result.message);
-          }}>
-          Call Backend
-        </Button>
-        <ToggleDarkMode />
+    </View>
+
+    <View margin={2} alignItems={'center'}>
+      <Image h={16} w={16} borderRadius={100}
+        source={{
+          uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiKUBafiNEc-HcMtgslV-6hCBtBrsBxYM5Bc75D_RB2FA45GvKzJi2py20b6BlwK3LadY&usqp=CAU"
+        }}
+        alt="Alternate Text"
+      />
+    </View>
+  </Flex>
+
+
+  {/*Searching*/}
+<View bgColor={"white"}>
+  <VStack my="3" space={5} w="100%" maxW="500px" divider={<Box px="2">
+          <Divider />
+        </Box>}>
+      <VStack w="85%" space={5} alignSelf="center">
+        <Input placeholder="Search" variant={'filled'} width="97%" shadow={4} borderRadius="20" py="2" px="5" InputLeftElement={<EvilIcons name='search' color="black" size={40}  />}
+        />
       </VStack>
-    </Center>
-  );
+  </VStack>
+</View>
+
+    {/*Body*/}
+<ScrollView
+  bgColor={'gray.100'}
+  contentContainerStyle={{
+    paddingBottom: 100,
+  }}
+>
+{/*Category*/}
+  <Categories/>
+
+{/*Feature Row*/}
+ <FeaturedRow
+    id="1"
+    title= "Featured"
+    description =" Something you may like"
+ />
+
+{/*Trending Row*/}
+<FeaturedRow
+    id="2"
+    title= "Trend"
+    description =" Locations that people love"
+ />
+
+{/*Top Visit Row*/}
+<FeaturedRow
+    id="3"
+    title= "Top visit"
+    description =" Everyone best choice!"
+ />
+
+{/*Le duoi cua Home*/}
+<View>
+  <Text fontSize={42}>hello</Text>
+</View>
+
+</ScrollView>
+</SafeAreaView>
+
+  )
 };
 export default Home;

@@ -1,11 +1,30 @@
 import { StyleSheet } from 'react-native';
 
-// Style should be separated into a separate file so that it can be reused many times on 1 screen
-
 export default StyleSheet.create({
-  helloLine: {
-    fontWeight:'bold',
-    fontSize:24,
-    color:'black',
+  scrollView: {
+    paddingHorizontal: 15,
+    paddingTop: 10,
+  },
+
+  touchableOpacity: {
+    elevation: 9,
+  },
+  view: {
+    alignContent: 'space-between',
+    alignItems: 'center',
+  },
+  image: {
+    height: 70,
+    width: 70,
+    borderRadius: 5,
+    marginLeft: 9,
+    marginRight: 12,
+  },
+  text: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    color: 'black',
+    marginTop: 2,
+    marginBottom: 10,
   },
 });

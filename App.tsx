@@ -5,10 +5,9 @@ import { NativeBaseProvider } from 'native-base';
 import { Provider } from 'react-redux';
 import store from './src/redux';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import SimpleLineIcons from 'react-native-vector-icons/Ionicons';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import { NavigationContainer } from '@react-navigation/native';
 import { Home, Settings } from './src/screens';
+import { AntDesign, Ionicons } from './src/lib/icons';
 
 const Tab = createBottomTabNavigator();
 
@@ -38,7 +37,7 @@ function App() {
               component={Settings}
               options={{
                 tabBarIcon: ({ color, size }) => (
-                  <SimpleLineIcons name="grid" color={color} size={size} />
+                  <Ionicons name="grid" color={color} size={size} />
                 ),
               }}
             />
@@ -47,7 +46,7 @@ function App() {
               component={Settings}
               options={{
                 tabBarIcon: ({ color, size }) => (
-                  <SimpleLineIcons name="heart" color={color} size={size} />
+                  <Ionicons name="heart" color={color} size={size} />
                 ),
               }}
             />

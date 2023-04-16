@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import store from './src/redux';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import { Home, Settings } from './src/screens';
+import { Home, Login, Settings } from './src/screens';
 import { AntDesign, Ionicons } from './src/lib/icons';
 
 const Tab = createBottomTabNavigator();
@@ -52,7 +52,7 @@ function App() {
             />
             <Tab.Screen
               name="Bag"
-              component={Settings}
+              component={Login}
               options={{
                 tabBarIcon: ({ color, size }) => (
                   <AntDesign name="cloudo" color={color} size={size} />

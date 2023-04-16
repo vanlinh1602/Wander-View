@@ -1,9 +1,9 @@
-import { View, Text, ScrollView } from 'native-base'
-import React from 'react'
-import AntIcon from "react-native-vector-icons/AntDesign";
+import { ScrollView, Text, View } from 'native-base';
+import React from 'react';
+import AntIcon from 'react-native-vector-icons/AntDesign';
 import LocationCard from './LocationCard';
 
-const FeaturedRow = ({id,title,description}:any) => {
+const FeaturedRow = ({ _id, title, description }:any) => {
   return (
     <View>
       <View marginTop={-2} flexDirection={'row'} alignItems={'center'} p={3} justifyContent={'space-between'}>
@@ -23,7 +23,7 @@ const FeaturedRow = ({id,title,description}:any) => {
         pt={4}
       >
 
-        {/*Location Card*/}
+        {/* Location Card*/}
         <LocationCard
           id ={1}
           imgUrl="https://globalgrasshopper.com/wp-content/uploads/2011/11/Top-10-of-the-most-beautiful-places-to-visit-in-Vietnam.jpg"
@@ -64,7 +64,7 @@ const FeaturedRow = ({id,title,description}:any) => {
         />
       </ScrollView>
     </View>
-  )
-}
+  );
+};
 
-export default FeaturedRow
+export default FeaturedRow;

@@ -8,9 +8,4 @@ export default StyleSheet.create({
     fontSize:24,
     color:'black',
   },
-  introLine:{
-    fontWeight:'bold',
-    fontSize:18,
-    color:'gray.400',
-  },
 });

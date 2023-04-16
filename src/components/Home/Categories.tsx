@@ -1,7 +1,6 @@
-//import { View, Text } from 'react-native'
-import React from 'react'
-import { ScrollView,View,Text } from 'native-base'
-import CategoryCard from './CategoryCard'
+import React from 'react';
+import { ScrollView, View } from 'native-base';
+import CategoryCard from './CategoryCard';
 
 const Categories = () => {
 
@@ -14,7 +13,7 @@ const Categories = () => {
         paddingTop: 10,
       }}
     >
-      {/*CategoryCard*/}
+      {/* CategoryCard*/}
       <View flexDirection={'row'} >
       <CategoryCard
         imgUrl="https://cdn-icons-png.flaticon.com/512/10397/10397062.png"
@@ -34,7 +33,7 @@ const Categories = () => {
       </View>
 
     </ScrollView>
-  )
-}
+  );
+};
 
-export default Categories
+export default Categories;

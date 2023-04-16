@@ -3,7 +3,7 @@ import React from 'react'
 import AntIcon from "react-native-vector-icons/AntDesign";
 import LocationCard from './LocationCard';
 
-const FeaturedRow = ({id,title,description}) => {
+const FeaturedRow = ({id,title,description}:any) => {
   return (
     <View>
       <View marginTop={-2} flexDirection={'row'} alignItems={'center'} p={3} justifyContent={'space-between'}>

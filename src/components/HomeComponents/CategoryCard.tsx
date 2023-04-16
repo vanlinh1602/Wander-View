@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity,Image } from 'react-native'
 import React from 'react'
 
-const CategoryCard = ({imgUrl,title}) => {
+const CategoryCard = ({imgUrl,title}: any) => {
   return (
     <TouchableOpacity
       style={{elevation:9}}

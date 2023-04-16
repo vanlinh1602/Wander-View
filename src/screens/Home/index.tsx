@@ -1,4 +1,3 @@
-import React, { useLayoutEffect, useState } from 'react';
 import {
   Text,
   View,
@@ -9,33 +8,23 @@ import {
   Box,
   Input,
   ScrollView,
-
 } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import AntIcon from "react-native-vector-icons/AntDesign";
 import EvilIcons from "react-native-vector-icons/EvilIcons"
-import Categories from '../../components/Categories';
-import FeaturedRow from '../../components/FeaturedRow';
-
+import Categories from '../../components/HomeComponents/Categories';
+import FeaturedRow from '../../components/HomeComponents/FeaturedRow';
+import styles from './styles';
 const Home = () => {
-  // const navigation= useNavigation();
-
-  // useLayoutEffect(() =>{
-  //   navigation.setOptions({
-
-  //   })
-  // },[])
-
-
   return (
 <SafeAreaView>
   {/*Header*/}
   <Flex  direction='row' safeAreaTop backgroundColor={"white"}>
 
     <View margin={2} flex={1}>
-      <Text fontWeight={'bold'} fontSize={24} color={"black"}> Hello <Text color={'orange.600'}>Traveler!</Text></Text>
-      <Text fontWeight={'bold'} fontSize={18} color={"gray.400"}> Let's discover a new <Text color={"purple.600"}>adventure</Text> </Text>
+      <Text style={styles.helloLine}> Hello <Text color={'orange.600'}>Traveler!</Text></Text>
+      <Text style={styles.introLine}> Let's discover a new <Text color={"purple.600"}>adventure</Text> </Text>
 
     </View>
 

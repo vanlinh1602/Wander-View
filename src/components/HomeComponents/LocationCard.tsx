@@ -12,7 +12,7 @@ const LocationCard = ({
   activities,
   long,
   lat,
-}) => {
+}:any) => {
   return (
     <TouchableOpacity style={{backgroundColor:'white', elevation:9, marginRight:15}}>
       <Image

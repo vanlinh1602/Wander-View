@@ -32,7 +32,7 @@ const LocationCard = ({
 
       <View style={{flexDirection:'row',marginTop:5,marginLeft:9}}>
         <AntIcon name="enviroment" color="gray" size={20} />
-        <Text style={{fontSize:15,color:'gray'}}>Nearby . {address}</Text>
+        <Text style={{fontSize:15, color:'darkorange'}}> Nearby .{address}</Text>
       </View>
 
 

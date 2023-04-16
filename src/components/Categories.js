@@ -17,19 +17,19 @@ const Categories = () => {
       {/*CategoryCard*/}
       <View flexDirection={'row'} >
       <CategoryCard
-        imgUrl="https://otakuusamagazine.com/wp-content/uploads/2020/12/kuma-kuma-kuma-bearS2announce.jpg"
+        imgUrl="https://cdn-icons-png.flaticon.com/512/10397/10397062.png"
         title = "Camping"/>
       <CategoryCard
-        imgUrl="https://otakuusamagazine.com/wp-content/uploads/2020/12/kuma-kuma-kuma-bearS2announce.jpg"
+        imgUrl="https://cdn-icons-png.flaticon.com/512/4336/4336883.png"
         title = "Beach"/>
       <CategoryCard
-        imgUrl="https://otakuusamagazine.com/wp-content/uploads/2020/12/kuma-kuma-kuma-bearS2announce.jpg"
+        imgUrl="https://cdn-icons-png.flaticon.com/512/10180/10180302.png"
         title = "Kayak"/>
       <CategoryCard
-        imgUrl="https://otakuusamagazine.com/wp-content/uploads/2020/12/kuma-kuma-kuma-bearS2announce.jpg"
+        imgUrl="https://cdn-icons-png.flaticon.com/512/2847/2847264.png"
         title = "Mount"/>
       <CategoryCard
-        imgUrl="https://otakuusamagazine.com/wp-content/uploads/2020/12/kuma-kuma-kuma-bearS2announce.jpg"
+        imgUrl="https://cdn-icons-png.flaticon.com/512/2321/2321588.png"
         title = "Forest"/>
       </View>
 

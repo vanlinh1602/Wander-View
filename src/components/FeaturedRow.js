@@ -12,7 +12,7 @@ const FeaturedRow = ({id,title,description}) => {
       </View>
 
 
-        <Text fontSize={15} px={4} color={'gray.700'} marginTop={-4}>{description}</Text>
+        <Text fontSize={17} px={4} color={'blue.700'} marginTop={-4}>{description}</Text>
 
       <ScrollView
         horizontal
@@ -26,7 +26,7 @@ const FeaturedRow = ({id,title,description}) => {
         {/*Location Card*/}
         <LocationCard
           id ={1}
-          imgUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM2GTiXi0Tb4YPCB4ukFavwn6usviN5iocLg&usqp=CAU"
+          imgUrl="https://globalgrasshopper.com/wp-content/uploads/2011/11/Top-10-of-the-most-beautiful-places-to-visit-in-Vietnam.jpg"
           title=" Heaven"
           rating="4.5"
           genre="Mountain"

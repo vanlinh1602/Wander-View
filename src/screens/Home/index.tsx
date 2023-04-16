@@ -34,8 +34,8 @@ const Home = () => {
   <Flex  direction='row' safeAreaTop backgroundColor={"white"}>
 
     <View margin={2} flex={1}>
-      <Text fontWeight={'bold'} fontSize={22} color={"purple.700"}> Hello Kuma!</Text>
-      <Text fontWeight={'bold'} fontSize={16} color={"gray.400"}> Let's discover a new adventure </Text>
+      <Text fontWeight={'bold'} fontSize={24} color={"black"}> Hello <Text color={'orange.600'}>Traveler!</Text></Text>
+      <Text fontWeight={'bold'} fontSize={18} color={"gray.400"}> Let's discover a new <Text color={"purple.600"}>adventure</Text> </Text>
 
     </View>
 

@@ -1,13 +1,13 @@
 /* eslint-disable react/no-unstable-nested-components */
-
 import React from 'react';
 import { NativeBaseProvider } from 'native-base';
 import { Provider } from 'react-redux';
 import store from './src/redux';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import { Home, Login, Settings } from './src/screens';
+import { Home, Settings } from './src/screens';
 import { AntDesign, Ionicons } from './src/lib/icons';
+import AuthorizedScreen from './AuthorizedScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -43,16 +43,20 @@ function App() {
             />
             <Tab.Screen
               name="Like"
-              component={Settings}
               options={{
                 tabBarIcon: ({ color, size }) => (
                   <Ionicons name="heart" color={color} size={size} />
                 ),
-              }}
-            />
+              }}>
+              {({ navigation }) => (
+                <AuthorizedScreen navigation={navigation}>
+                  <Settings />
+                </AuthorizedScreen>
+              )}
+            </Tab.Screen>
             <Tab.Screen
               name="Bag"
-              component={Login}
+              component={Settings}
               options={{
                 tabBarIcon: ({ color, size }) => (
                   <AntDesign name="cloudo" color={color} size={size} />

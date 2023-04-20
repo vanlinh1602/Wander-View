@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Avatar, Button, Center, Text } from 'native-base';
 
 import styles from './styles';
@@ -7,10 +7,16 @@ import auth from '@react-native-firebase/auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../../redux/reducers/user';
 import { selectUser } from '../../redux/selectors/users';
+type Props = {
+  navigation?: any;
+};
 
-function Account() {
+function Account({ navigation }: Props) {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
+  useEffect(() => {
+    navigation?.setOptions({ tabBarStyle: { display: 'flex' } });
+  }, [navigation]);
   return (
     <Center style={styles.container}>
       <Avatar source={assets.avatar} />

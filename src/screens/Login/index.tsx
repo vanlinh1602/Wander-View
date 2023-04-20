@@ -103,10 +103,7 @@ function Login({ navigation }: Props) {
             }
           />
           <Button
-            onPress={async () => {
-              await loginWithEmail();
-              navigation?.setOptions({ tabBarStyle: { display: 'flex' } });
-            }}
+            onPress={loginWithEmail}
             backgroundColor="#2D86FF"
             fontSize="4xl"
             style={S.button}>

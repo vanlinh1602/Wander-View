@@ -63,7 +63,7 @@ function App() {
               }}>
               {({ navigation }) => (
                 <AuthorizedScreen navigation={navigation}>
-                  <Account />
+                  <Account navigation={navigation} />
                 </AuthorizedScreen>
               )}
             </Tab.Screen>

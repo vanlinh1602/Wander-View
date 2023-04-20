@@ -13,8 +13,8 @@ function* signIn(action: SignInAction) {
         uid,
         email,
       });
-    if (result.kind === 'ok') {
-      yield put(actions.fetchUser(result.data!));
+    if (result.kind === 'ok' && result.data) {
+      yield put(actions.fetchUser(result.data));
     }
   }
 }

@@ -23,7 +23,7 @@ import { useDispatch } from 'react-redux';
 import { actions } from '../../redux/reducers/user';
 import SignUp from '../../components/SignUp';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
-import type { Login } from '../../types/login';
+import type { LoginInfo } from '../../types/login';
 
 type Props = {
   navigation?: any;
@@ -35,7 +35,7 @@ function Login({ navigation }: Props) {
   }, [navigation]);
   const [show, setShow] = useState(false);
   const [showModalSign, setShowModalSign] = useState(false);
-  const [loginInfo, setLoginInfo] = useState<Login>({});
+  const [loginInfo, setLoginInfo] = useState<LoginInfo>({});
   const dispatch = useDispatch();
   const loginSuccess = async (user: FirebaseAuthTypes.User) => {
     dispatch(actions.signIn({ email: user.email ?? '', uid: user.uid }));

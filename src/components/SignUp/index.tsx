@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, FormControl, Input, Modal, Pressable } from 'native-base';
 import { MaterialIcons } from '../../lib/icons';
 import S from './styles';
-import type { Login } from '../../types/login';
+import type { LoginInfo } from '../../types/login';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 
 type Props = {
@@ -14,7 +14,7 @@ const SignUp = ({ onClose, signSuccess }: Props) => {
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
   const [show, setShow] = useState(false);
-  const [loginInfo, setLoginInfo] = useState<Login>({});
+  const [loginInfo, setLoginInfo] = useState<LoginInfo>({});
 
   const handleSignUp = () => {
     auth()

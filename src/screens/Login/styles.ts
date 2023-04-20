@@ -26,4 +26,19 @@ export default StyleSheet.create({
     color: 'white',
     lineHeight: 30,
   },
+
+  input: {
+    color: 'black',
+    fontSize: 16,
+  },
+  iconInput: {
+    fontSize: 20,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  logoIcon: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });

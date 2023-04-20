@@ -14,11 +14,11 @@ const SignUp = ({ onClose, signSuccess }: Props) => {
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
   const [show, setShow] = useState(false);
-  const [login, setLogin] = useState<Login>({});
+  const [loginInfo, setLoginInfo] = useState<Login>({});
 
   const handleSignUp = () => {
     auth()
-      .createUserWithEmailAndPassword(login.email ?? '', login.pass ?? '')
+      .createUserWithEmailAndPassword(loginInfo.email!, loginInfo.pass!)
       .then(result => {
         signSuccess(result.user);
       })
@@ -50,7 +50,7 @@ const SignUp = ({ onClose, signSuccess }: Props) => {
             <Input
               ref={initialRef}
               onChangeText={value =>
-                setLogin(pre => ({ ...pre, email: value }))
+                setLoginInfo(pre => ({ ...pre, email: value }))
               }
             />
           </FormControl>
@@ -66,7 +66,9 @@ const SignUp = ({ onClose, signSuccess }: Props) => {
                   />
                 </Pressable>
               }
-              onChangeText={value => setLogin(pre => ({ ...pre, pass: value }))}
+              onChangeText={value =>
+                setLoginInfo(pre => ({ ...pre, pass: value }))
+              }
             />
           </FormControl>
         </Modal.Body>

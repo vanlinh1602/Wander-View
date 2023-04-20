@@ -35,15 +35,15 @@ function Login({ navigation }: Props) {
   }, [navigation]);
   const [show, setShow] = useState(false);
   const [showModalSign, setShowModalSign] = useState(false);
-  const [infoLogin, setInfoLogin] = useState<Login>({});
+  const [loginInfo, setLoginInfo] = useState<Login>({});
   const dispatch = useDispatch();
-  const loginSuccess = (user: FirebaseAuthTypes.User) => {
-    dispatch(actions.fetchUser({ user }));
+  const loginSuccess = async (user: FirebaseAuthTypes.User) => {
+    dispatch(actions.signIn({ email: user.email ?? '', uid: user.uid }));
   };
 
-  const loginWithEmail = () => {
-    auth()
-      .signInWithEmailAndPassword(infoLogin.email ?? '', infoLogin.pass ?? '')
+  const loginWithEmail = async () => {
+    await auth()
+      .signInWithEmailAndPassword(loginInfo.email ?? '', loginInfo.pass ?? '')
       .then(result => {
         loginSuccess(result.user);
       })
@@ -77,7 +77,7 @@ function Login({ navigation }: Props) {
             }
             placeholder="Email"
             onChangeText={value =>
-              setInfoLogin(pre => ({ ...pre, email: value }))
+              setLoginInfo(pre => ({ ...pre, email: value }))
             }
           />
           <Input
@@ -99,12 +99,12 @@ function Login({ navigation }: Props) {
             }
             placeholder="Password"
             onChangeText={value =>
-              setInfoLogin(pre => ({ ...pre, pass: value }))
+              setLoginInfo(pre => ({ ...pre, pass: value }))
             }
           />
           <Button
-            onPress={() => {
-              loginWithEmail();
+            onPress={async () => {
+              await loginWithEmail();
               navigation?.setOptions({ tabBarStyle: { display: 'flex' } });
             }}
             backgroundColor="#2D86FF"

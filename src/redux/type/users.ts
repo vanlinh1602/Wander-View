@@ -1,4 +1,3 @@
-import type { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 export type UserInfo = {
@@ -11,6 +10,6 @@ export type Users = {
   loading: boolean;
 };
 
-export type FetchUsersAction = PayloadAction<
-  { user: FirebaseAuthTypes.User } | undefined
+export type SignInAction = PayloadAction<
+  { email: string; uid: string } | undefined
 >;

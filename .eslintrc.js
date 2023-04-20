@@ -14,7 +14,6 @@ module.exports = {
     '@typescript-eslint/indent': 0,
     'no-var': 'error',
     'arrow-spacing': ['warn', { before: true, after: true }],
-    'brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
     'comma-dangle': ['error', 'always-multiline'],
     'comma-spacing': 'error',
     'comma-style': 'error',

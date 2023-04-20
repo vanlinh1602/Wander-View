@@ -21,6 +21,9 @@ import {
 } from '../../lib/icons';
 import { useDispatch } from 'react-redux';
 import { actions } from '../../redux/reducers/user';
+import SignUp from '../../components/SignUp';
+import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import type { LoginInfo } from '../../types/login';
 
 type Props = {
   navigation?: any;
@@ -31,9 +34,31 @@ function Login({ navigation }: Props) {
     navigation?.setOptions({ tabBarStyle: { display: 'none' } });
   }, [navigation]);
   const [show, setShow] = useState(false);
+  const [showModalSign, setShowModalSign] = useState(false);
+  const [loginInfo, setLoginInfo] = useState<LoginInfo>({});
   const dispatch = useDispatch();
+  const loginSuccess = async (user: FirebaseAuthTypes.User) => {
+    dispatch(actions.signIn({ email: user.email ?? '', uid: user.uid }));
+  };
+
+  const loginWithEmail = async () => {
+    await auth()
+      .signInWithEmailAndPassword(loginInfo.email ?? '', loginInfo.pass ?? '')
+      .then(result => {
+        loginSuccess(result.user);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
   return (
     <ImageBackground style={S.background} source={assets.backgroundLogin}>
+      {showModalSign ? (
+        <SignUp
+          onClose={() => setShowModalSign(false)}
+          signSuccess={loginSuccess}
+        />
+      ) : null}
       <Center style={S.center}>
         <Heading fontSize="5xl" style={S.title}>
           Sign In
@@ -51,6 +76,9 @@ function Login({ navigation }: Props) {
               <Ionicons name="person" size={24} style={S.iconInput} />
             }
             placeholder="Email"
+            onChangeText={value =>
+              setLoginInfo(pre => ({ ...pre, email: value }))
+            }
           />
           <Input
             backgroundColor="white"
@@ -70,18 +98,21 @@ function Login({ navigation }: Props) {
               </Pressable>
             }
             placeholder="Password"
+            onChangeText={value =>
+              setLoginInfo(pre => ({ ...pre, pass: value }))
+            }
           />
           <Button
-            onPress={() => {
-              dispatch(actions.fetchUser);
-              navigation?.setOptions({ tabBarStyle: { display: 'flex' } });
-            }}
+            onPress={loginWithEmail}
             backgroundColor="#2D86FF"
             fontSize="4xl"
             style={S.button}>
             <Text style={S.textBtn}>Sign In</Text>
           </Button>
-          <Button colorScheme="secondary" variant="ghost">
+          <Button
+            colorScheme="secondary"
+            variant="ghost"
+            onPress={() => setShowModalSign(true)}>
             <Text fontSize={16} color="secondary.700">
               Or Sign Up
             </Text>

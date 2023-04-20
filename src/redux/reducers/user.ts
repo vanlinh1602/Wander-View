@@ -1,18 +1,27 @@
-const initialState = {
-  users: [],
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import type { Users } from '../type/users';
+
+export const initialState: Users = {
+  user: {},
   loading: false,
-  error: null,
 };
 
-const userReducer = (state = initialState, action: any) => {
-  switch (action.type) {
-    case 'FETCH_USERS':
-      return { ...state, loading: true };
-    case 'FETCH_SUCCESS':
-      return { ...state, loading: false, users: action.payload };
-    default:
-      return state;
-  }
-};
+const usersSlice = createSlice({
+  name: 'example',
+  initialState,
+  reducers: {
+    fetchUser(state, _action) {
+      state.loading = true;
+    },
+    fetchSuccess(
+      state,
+      action: PayloadAction<{ name: string; email: string }>,
+    ) {
+      state.loading = false;
+      state.user = action.payload;
+    },
+  },
+});
 
-export default userReducer;
+export const { actions, reducer } = usersSlice;

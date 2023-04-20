@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { Users } from '../type/users';
+import type { FetchUsersAction, UserInfo, Users } from '../type/users';
 
 export const initialState: Users = {
   user: {},
@@ -11,13 +11,10 @@ const usersSlice = createSlice({
   name: 'example',
   initialState,
   reducers: {
-    fetchUser(state, _action) {
+    fetchUser(state, _action: FetchUsersAction) {
       state.loading = true;
     },
-    fetchSuccess(
-      state,
-      action: PayloadAction<{ name: string; email: string }>,
-    ) {
+    fetchSuccess(state, action: PayloadAction<UserInfo>) {
       state.loading = false;
       state.user = action.payload;
     },

@@ -14,9 +14,7 @@ function* signIn(action: SignInAction) {
         email,
       });
     if (result.kind === 'ok') {
-      if (result.data) {
-        yield put(actions.fetchUser(result.data));
-      }
+      yield put(actions.fetchUser(result.data!));
     }
   }
 }

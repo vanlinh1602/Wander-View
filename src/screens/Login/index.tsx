@@ -19,12 +19,11 @@ import {
   Ionicons,
   MaterialIcons,
 } from '../../lib/icons';
-import SignUp from '../../components/SignUp';
 import auth from '@react-native-firebase/auth';
 import type { LoginInfo } from '../../types/login';
-import Waiting from '../../components/Waiting';
 import { selectLoadingUser } from '../../redux/selectors/user';
 import { useSelector } from 'react-redux';
+import { SignUp, Waiting } from '../../components';
 
 type Props = {
   navigation?: any;

@@ -1,4 +1,4 @@
-import { BACKEND_URL } from '../lib/configs';
+import { BACKEND_URL } from '../lib/config';
 import Api from './api';
 
 export const backendService = new Api({

@@ -5,8 +5,8 @@ export type UserInfo = {
   name?: string;
 };
 
-export type Users = {
-  user?: UserInfo;
+export type User = {
+  info?: UserInfo;
   loading: boolean;
 };
 

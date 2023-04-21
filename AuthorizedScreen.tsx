@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectUser } from './src/redux/selectors/users';
+import { selectUser } from './src/redux/selectors/user';
 import Login from './src/screens/Login';
 type Props = {
   children: JSX.Element;

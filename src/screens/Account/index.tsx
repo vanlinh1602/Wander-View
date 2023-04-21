@@ -6,7 +6,7 @@ import { assets } from '../../lib/assets';
 import auth from '@react-native-firebase/auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../../redux/reducers/user';
-import { selectUser } from '../../redux/selectors/users';
+import { selectUser } from '../../redux/selectors/user';
 type Props = {
   navigation?: any;
 };

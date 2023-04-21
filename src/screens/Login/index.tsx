@@ -22,6 +22,9 @@ import {
 import SignUp from '../../components/SignUp';
 import auth from '@react-native-firebase/auth';
 import type { LoginInfo } from '../../types/login';
+import Waiting from '../../components/Waiting';
+import { selectLoadingUser } from '../../redux/selectors/user';
+import { useSelector } from 'react-redux';
 
 type Props = {
   navigation?: any;
@@ -34,18 +37,26 @@ function Login({ navigation }: Props) {
   const [show, setShow] = useState(false);
   const [showModalSign, setShowModalSign] = useState(false);
   const [loginInfo, setLoginInfo] = useState<LoginInfo>({});
+  const [waiting, setWaiting] = useState<boolean>(false);
+  const loadUser = useSelector(selectLoadingUser);
 
   const loginWithEmail = async () => {
+    setWaiting(true);
     await auth()
       .signInWithEmailAndPassword(loginInfo.email ?? '', loginInfo.pass ?? '')
       .catch(error => {
+        setWaiting(false);
         console.error(error);
       });
   };
   return (
     <ImageBackground style={S.background} source={assets.backgroundLogin}>
+      {waiting || loadUser ? <Waiting /> : null}
       {showModalSign ? (
-        <SignUp onClose={() => setShowModalSign(false)} />
+        <SignUp
+          onClose={() => setShowModalSign(false)}
+          onWait={value => setWaiting(value)}
+        />
       ) : null}
       <Center style={S.center}>
         <Heading fontSize="5xl" style={S.title}>

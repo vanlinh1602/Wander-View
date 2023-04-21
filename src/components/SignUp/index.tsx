@@ -7,15 +7,18 @@ import auth from '@react-native-firebase/auth';
 
 type Props = {
   onClose: () => void;
+  onWait: (value: boolean) => void;
 };
 
-const SignUp = ({ onClose }: Props) => {
+const SignUp = ({ onClose, onWait }: Props) => {
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
   const [show, setShow] = useState(false);
   const [loginInfo, setLoginInfo] = useState<LoginInfo>({});
 
-  const handleSignUp = () => {
+  const handleSignUp = async () => {
+    onWait(true);
+    onClose();
     auth()
       .createUserWithEmailAndPassword(loginInfo.email!, loginInfo.pass!)
       .catch(error => {
@@ -26,7 +29,7 @@ const SignUp = ({ onClose }: Props) => {
         if (error.code === 'auth/invalid-email') {
           console.log('That email address is invalid!');
         }
-
+        onWait(false);
         console.error(error);
       });
   };

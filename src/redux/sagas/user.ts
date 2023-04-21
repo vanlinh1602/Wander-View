@@ -1,7 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 
 import { actions } from '../reducers/user';
-import type { SignInAction, UserInfo } from '../type/users';
+import type { SignInAction, UserInfo } from '../types/users';
 import { backendService } from '../../services';
 
 function* signIn(action: SignInAction) {

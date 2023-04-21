@@ -3,14 +3,13 @@ import { Button, FormControl, Input, Modal, Pressable } from 'native-base';
 import { MaterialIcons } from '../../lib/icons';
 import S from './styles';
 import type { LoginInfo } from '../../types/login';
-import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import auth from '@react-native-firebase/auth';
 
 type Props = {
   onClose: () => void;
-  signSuccess: (user: FirebaseAuthTypes.User) => void;
 };
 
-const SignUp = ({ onClose, signSuccess }: Props) => {
+const SignUp = ({ onClose }: Props) => {
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
   const [show, setShow] = useState(false);
@@ -19,9 +18,6 @@ const SignUp = ({ onClose, signSuccess }: Props) => {
   const handleSignUp = () => {
     auth()
       .createUserWithEmailAndPassword(loginInfo.email!, loginInfo.pass!)
-      .then(result => {
-        signSuccess(result.user);
-      })
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
           console.log('That email address is already in use!');

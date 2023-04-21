@@ -21,13 +21,13 @@ function* signIn(action: SignInAction) {
 }
 
 function* updateUser(action: PayloadAction<UserInfo>) {
-  const userUpdate = action.payload;
+  const userData = action.payload;
   const updated: WithApiResult<boolean> = yield backendService.post(
     'api/updateUser',
-    userUpdate,
+    userData,
   );
   if (updated.kind === 'ok') {
-    yield put(actions.fetchUser(userUpdate));
+    yield put(actions.fetchUser(userData));
   }
 }
 

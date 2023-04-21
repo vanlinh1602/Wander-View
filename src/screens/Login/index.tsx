@@ -11,7 +11,7 @@ import {
   Text,
 } from 'native-base';
 import { ImageBackground } from 'react-native';
-import { assets } from '../../lib/assets';
+import { images } from '../../lib/assets';
 import S from './styles';
 import {
   AntDesign,
@@ -49,7 +49,7 @@ function Login({ navigation }: Props) {
       });
   };
   return (
-    <ImageBackground style={S.background} source={assets.backgroundLogin}>
+    <ImageBackground style={S.background} source={images.backgroundLogin}>
       {waiting || loadUser ? <Waiting /> : null}
       {showModalSign ? (
         <SignUp

@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:234781397834:android:e15d3b5d28e80d6dbbe7b3",
+        "mobilesdk_app_id": "1:234781397834:android:ef6bde01c866da39bbe7b3",
         "android_client_info": {
-          "package_name": "com.weatherapp"
+          "package_name": "com.wanderview"
         }
       },
       "oauth_client": [

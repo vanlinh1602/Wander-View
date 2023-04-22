@@ -95,9 +95,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.weatherapp"
+    namespace "com.wanderview"
     defaultConfig {
-        applicationId "com.weatherapp"
+        applicationId "com.wanderview"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

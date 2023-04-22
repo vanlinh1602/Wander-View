@@ -13,4 +13,10 @@ export default StyleSheet.create({
     fontSize:18,
     color:'gray.400',
   },
+  paddingBottom:{
+    paddingBottom:100,
+  },
+  padding:{
+    paddingHorizontal:15,
+  },
 });

@@ -15,7 +15,9 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import Categories from '../../components/Home/Categories';
 import FeaturedRow from '../../components/Home/FeaturedRow';
 import styles from './styles';
-import type { CategoryCard } from '../../components/Home/type';
+import type { CategoryCard, LocationCards } from '../../components/Home/type';
+import LocationCard from '../../components/Home/LocationCard';
+
 const categories: CategoryCard[] = [
   {
     imgUrl: 'https://cdn-icons-png.flaticon.com/512/10397/10397062.png',
@@ -38,6 +40,31 @@ const categories: CategoryCard[] = [
     title: 'Forest',
   },
 ];
+
+const locations: LocationCards[] = [
+  {
+    imgUrl:'https://globalgrasshopper.com/wp-content/uploads/2011/11/Top-10-of-the-most-beautiful-places-to-visit-in-Vietnam.jpg',
+    title: 'Heaven',
+    rating:'4.5',
+    genre:'Mountain',
+    address : ' 12 Suoi Tien',
+  },
+  {
+    imgUrl:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXQUcZ4vbrvWpgSJEZ3DEVDnx_ZqQTojyeo6ksrLdapFAIOZetsRls3isNUFgjFnfoh3M&usqp=CAU',
+    title:' Waterfall',
+    rating:'4.0',
+    genre:'Mountain',
+    address : '43 Long Coast',
+  },
+  {
+    imgUrl:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9s_zZrFrYU4J9pEMWyjKdupraMMxXyPsFZg&usqp=CAU',
+    title:'Jurasic Park',
+    rating:'4.0',
+    genre:'Camping',
+    address : ' 5 Mars',
+  },
+];
+
 const Home = () => {
   return (
     <SafeAreaView>
@@ -101,10 +128,7 @@ const Home = () => {
       {/* Body*/}
       <ScrollView
         bgColor={'gray.100'}
-        // eslint-disable-next-line react-native/no-inline-styles
-        contentContainerStyle={{
-          paddingBottom: 100,
-        }}>
+        contentContainerStyle={styles.paddingBottom}>
         {/* Category*/}
         <Categories categories={categories} />
 
@@ -114,6 +138,14 @@ const Home = () => {
           title="Featured"
           description=" Something you may like"
         />
+        <ScrollView
+        horizontal
+        contentContainerStyle={styles.padding}
+        showsHorizontalScrollIndicator={false}
+        pt={4}
+        >
+        <LocationCard locations={locations}/>
+        </ScrollView>
 
         {/* Trending Row*/}
         <FeaturedRow
@@ -121,6 +153,15 @@ const Home = () => {
           title="Trend"
           description=" Locations that people love"
         />
+        <ScrollView
+        horizontal
+        contentContainerStyle={styles.padding}
+        showsHorizontalScrollIndicator={false}
+        pt={4}
+      >
+        <LocationCard locations={locations}/>
+        </ScrollView>
+
 
         {/* Top Visit Row*/}
         <FeaturedRow
@@ -128,6 +169,15 @@ const Home = () => {
           title="Top visit"
           description=" Everyone best choice!"
         />
+        <ScrollView
+        horizontal
+        contentContainerStyle={styles.padding}
+        showsHorizontalScrollIndicator={false}
+        pt={4}
+        >
+        <LocationCard locations={locations}/>
+        </ScrollView>
+
 
         {/* Le duoi cua Home*/}
         <View>

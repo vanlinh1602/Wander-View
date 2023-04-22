@@ -1,5 +1,5 @@
 {
-  "name": "WeatherApp",
+  "name": "WanderView",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -9,6 +9,16 @@
     "start": "react-native start",
     "test": "jest"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vanlinh1602/Wander-View.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vanlinh1602/Wander-View/issues"
+  },
+  "homepage": "https://github.com/vanlinh1602/Wander-View#readme",
   "dependencies": {
     "@react-native-firebase/app": "^17.4.2",
     "@react-native-firebase/auth": "^17.4.2",
@@ -17,12 +27,13 @@
     "@reduxjs/toolkit": "^1.9.5",
     "@types/react-redux": "^7.1.25",
     "@types/redux-saga": "^0.10.5",
-    "axios": "^1.3.5",
+    "apisauce": "^3.0.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "native-base": "^3.4.28",
     "react": "18.2.0",
     "react-native": "0.71.4",
+    "react-native-date-picker": "^4.2.12",
     "react-native-safe-area-context": "^3.4.1",
     "react-native-screens": "^3.20.0",
     "react-native-svg": "^12.1.1",
@@ -38,6 +49,7 @@
     "@react-native-community/eslint-config": "^3.2.0",
     "@tsconfig/react-native": "^2.0.2",
     "@types/jest": "^29.2.1",
+    "@types/lodash": "^4.14.194",
     "@types/react": "^18.0.24",
     "@types/react-native-vector-icons": "^6.4.13",
     "@types/react-test-renderer": "^18.0.0",

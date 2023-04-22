@@ -11,7 +11,7 @@ import {
   Text,
 } from 'native-base';
 import { ImageBackground } from 'react-native';
-import { assets } from '../../lib/assets';
+import { images } from '../../lib/assets';
 import S from './styles';
 import {
   AntDesign,
@@ -19,8 +19,11 @@ import {
   Ionicons,
   MaterialIcons,
 } from '../../lib/icons';
-import { useDispatch } from 'react-redux';
-import { actions } from '../../redux/reducers/user';
+import auth from '@react-native-firebase/auth';
+import type { LoginInfo } from '../../types/login';
+import { selectLoadingUser } from '../../redux/selectors/user';
+import { useSelector } from 'react-redux';
+import { SignUp, Waiting } from '../../components';
 
 type Props = {
   navigation?: any;
@@ -31,9 +34,29 @@ function Login({ navigation }: Props) {
     navigation?.setOptions({ tabBarStyle: { display: 'none' } });
   }, [navigation]);
   const [show, setShow] = useState(false);
-  const dispatch = useDispatch();
+  const [showModalSign, setShowModalSign] = useState(false);
+  const [loginInfo, setLoginInfo] = useState<LoginInfo>({});
+  const [waiting, setWaiting] = useState<boolean>(false);
+  const loadUser = useSelector(selectLoadingUser);
+
+  const loginWithEmail = async () => {
+    setWaiting(true);
+    await auth()
+      .signInWithEmailAndPassword(loginInfo.email ?? '', loginInfo.pass ?? '')
+      .catch(error => {
+        setWaiting(false);
+        console.error(error);
+      });
+  };
   return (
-    <ImageBackground style={S.background} source={assets.backgroundLogin}>
+    <ImageBackground style={S.background} source={images.backgroundLogin}>
+      {waiting || loadUser ? <Waiting /> : null}
+      {showModalSign ? (
+        <SignUp
+          onClose={() => setShowModalSign(false)}
+          onWait={value => setWaiting(value)}
+        />
+      ) : null}
       <Center style={S.center}>
         <Heading fontSize="5xl" style={S.title}>
           Sign In
@@ -51,6 +74,9 @@ function Login({ navigation }: Props) {
               <Ionicons name="person" size={24} style={S.iconInput} />
             }
             placeholder="Email"
+            onChangeText={value =>
+              setLoginInfo(pre => ({ ...pre, email: value }))
+            }
           />
           <Input
             backgroundColor="white"
@@ -70,18 +96,21 @@ function Login({ navigation }: Props) {
               </Pressable>
             }
             placeholder="Password"
+            onChangeText={value =>
+              setLoginInfo(pre => ({ ...pre, pass: value }))
+            }
           />
           <Button
-            onPress={() => {
-              dispatch(actions.fetchUser);
-              navigation?.setOptions({ tabBarStyle: { display: 'flex' } });
-            }}
+            onPress={loginWithEmail}
             backgroundColor="#2D86FF"
             fontSize="4xl"
             style={S.button}>
             <Text style={S.textBtn}>Sign In</Text>
           </Button>
-          <Button colorScheme="secondary" variant="ghost">
+          <Button
+            colorScheme="secondary"
+            variant="ghost"
+            onPress={() => setShowModalSign(true)}>
             <Text fontSize={16} color="secondary.700">
               Or Sign Up
             </Text>

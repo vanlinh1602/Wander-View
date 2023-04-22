@@ -10,7 +10,7 @@ type Props = {
 const AuthorizedScreen = ({ children, navigation }: Props) => {
   const user = useSelector(selectUser);
 
-  if (!user?.email) {
+  if (!user?.uid) {
     return <Login navigation={navigation} />;
   }
   return children;

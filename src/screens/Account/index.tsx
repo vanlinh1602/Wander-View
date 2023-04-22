@@ -4,6 +4,7 @@ import {
   Button,
   Center,
   Container,
+  Divider,
   HStack,
   Pressable,
   Text,
@@ -68,7 +69,7 @@ function Account({ navigation }: Props) {
           await auth()
             .signOut()
             .then(() => {
-              dispatch(actions.fetchUser(undefined));
+              dispatch(actions.signOut());
             });
         }}>
         {({ isPressed }) => (
@@ -123,7 +124,9 @@ function Account({ navigation }: Props) {
           Saved
         </Button>
       </HStack>
-      <Container width="full" height="full">
+
+      <Divider bg="#5646b7" thickness="2" mx="2" width="96" />
+      <Container width="full" height="full" mt="2">
         {renderCatalog()}
       </Container>
     </Center>

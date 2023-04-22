@@ -14,16 +14,15 @@ const userSlice = createSlice({
     signIn(state, _action: SignInAction) {
       state.loading = true;
     },
-    fetchUser(state, action: PayloadAction<UserInfo | undefined>) {
+    signOut(state) {
+      state.info = {};
+    },
+    fetchUser(state, action: PayloadAction<UserInfo>) {
       state.loading = false;
-      if (action.payload) {
-        state.info = {
-          ...state.info,
-          ...action.payload,
-        };
-      } else {
-        state.info = {};
-      }
+      state.info = {
+        ...state.info,
+        ...action.payload,
+      };
     },
     updateUser(state, _action: PayloadAction<UserInfo>) {
       state.loading = true;

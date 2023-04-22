@@ -1,4 +1,4 @@
-# Weather-App
+# Wander App
 
 # Requirement
 
@@ -8,10 +8,12 @@
 # After start
 
 - Get ip address to link with backend
-In the terminal run
+  In the terminal run
+
 ```
 ipconfig
 ```
+
 find IPv4 Address. See image below
 
 ![image](https://user-images.githubusercontent.com/81768181/230774693-2e37f803-3796-489e-9318-94921eec0cf3.png)

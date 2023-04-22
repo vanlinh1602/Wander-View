@@ -9,6 +9,16 @@
     "start": "react-native start",
     "test": "jest"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vanlinh1602/Wander-View.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vanlinh1602/Wander-View/issues"
+  },
+  "homepage": "https://github.com/vanlinh1602/Wander-View#readme",
   "dependencies": {
     "@react-native-firebase/app": "^17.4.2",
     "@react-native-firebase/auth": "^17.4.2",

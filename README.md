@@ -4,6 +4,9 @@
 
 - Using React Navite CLI [here](https://reactnative.dev/docs/environment-setup)
 - Using Android SDK Platform 33, please check and install before start
+- Using Device have Play Store. See image below
+
+![image](https://user-images.githubusercontent.com/81768181/233774679-ae015fa7-9913-43a6-8f98-16260336f724.png)
 
 # After start
 

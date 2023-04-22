@@ -23,7 +23,7 @@ const SelectAvatar = ({ onCancel, avatarUser, userUid }: Props) => {
     <Modal isOpen size="xl" onClose={onCancel}>
       <Modal.Content maxWidth="400px">
         <Modal.CloseButton />
-        <Modal.Header>Chọn avatar</Modal.Header>
+        <Modal.Header alignItems="center">CHỌN AVATAR</Modal.Header>
         <Modal.Body>
           <View width="full">
             {_.chunk(Object.entries(avatars), 3).map((subAvatar, index) => (
@@ -52,12 +52,11 @@ const SelectAvatar = ({ onCancel, avatarUser, userUid }: Props) => {
             ))}
           </View>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer justifyContent="center">
           <Button.Group space={2}>
-            <Button variant="ghost" colorScheme="blueGray" onPress={onCancel}>
-              Huỷ
+            <Button bg="#5646b7" onPress={onConfirm}>
+              Xác nhận
             </Button>
-            <Button onPress={onConfirm}>Chọn</Button>
           </Button.Group>
         </Modal.Footer>
       </Modal.Content>

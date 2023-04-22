@@ -54,7 +54,7 @@ function Account({ navigation }: Props) {
     }
   };
   return (
-    <Center style={S.container}>
+    <Center style={S.container} bg="#FCFBFE">
       {loadingUser ? <Waiting /> : null}
       {selectAvatar ? (
         <SelectAvatar
@@ -101,7 +101,7 @@ function Account({ navigation }: Props) {
         </Text>
       </VStack>
 
-      <HStack space={3} justifyContent="center">
+      <HStack space={3} justifyContent="center" alignItems="center">
         <Button
           size="lg"
           variant="link"
@@ -109,6 +109,7 @@ function Account({ navigation }: Props) {
           onPress={() => setActive('infomation')}>
           Infomation
         </Button>
+        <Divider height="1/2" thickness="2" orientation="vertical" />
         <Button
           size="lg"
           variant="link"
@@ -116,6 +117,7 @@ function Account({ navigation }: Props) {
           onPress={() => setActive('notifi')}>
           Notification
         </Button>
+        <Divider height="1/2" thickness="2" orientation="vertical" />
         <Button
           size="lg"
           variant="link"

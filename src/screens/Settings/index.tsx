@@ -1,23 +1,15 @@
 import React from 'react';
-import { Avatar, Button, Center, Text, View } from 'native-base';
+import { Avatar, Button, Center, Text } from 'native-base';
 
 import styles from './styles';
-import { assets } from '../../lib/assets';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from '../../redux/selectors/users';
-import { actions as usersAction } from '../../redux/reducers/user';
+import { avatars } from '../../lib/assets';
+
 function Settings() {
-  const user = useSelector(selectUser);
-  const dispath = useDispatch();
   return (
     <Center style={styles.container}>
-      <Avatar source={assets.avatar} />
+      <Avatar source={avatars.avatar1} />
       <Text>Settins screen</Text>
-      <View>
-        <Text>{user?.name}</Text>
-        <Text>{user?.email}</Text>
-      </View>
-      <Button onPress={() => dispath(usersAction.fetchUser)}>Fetch User</Button>
+      <Button>Press me</Button>
     </Center>
   );
 }

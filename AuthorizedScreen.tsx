@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectUser } from './src/redux/selectors/users';
-import { Login } from './src/screens';
+import { selectUser } from './src/redux/selectors/user';
+import Login from './src/screens/Login';
 type Props = {
   children: JSX.Element;
   navigation?: any;
@@ -10,8 +10,8 @@ type Props = {
 const AuthorizedScreen = ({ children, navigation }: Props) => {
   const user = useSelector(selectUser);
 
-  if (!user?.name) {
-    return <Login navigation={navigation ?? null} />;
+  if (!user?.uid) {
+    return <Login navigation={navigation} />;
   }
   return children;
 };

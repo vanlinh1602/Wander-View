@@ -61,6 +61,7 @@ export default StyleSheet.create({
   },
   searchBar: {
     alignItems : 'center',
+    backgroundcolor:'white',
     flexDirection: 'row',
     borderRadius : 20,
     borderWidth : 1,

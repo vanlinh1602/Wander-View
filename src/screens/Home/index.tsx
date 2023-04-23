@@ -1,15 +1,10 @@
-import {
-  Image,
-  ScrollView,
-  Text,
-  View,
-} from 'native-base';
+import { Image, ScrollView, Text, View } from 'native-base';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Categories from '../../components/Home/Categories';
-import FeaturedRow from '../../components/Home/FeaturedRow';
+import Categories from './catalogs/Categories';
+import FeaturedRow from './catalogs/FeaturedRow';
 import styles from './styles';
-import type { CategoryCard, LocationCards } from '../../components/Home/type';
-import LocationCard from '../../components/Home/LocationCard';
+import type { CategoryCard, LocationCards } from './catalogs/type';
+import LocationCard from './catalogs/LocationCard';
 import React from 'react';
 import { TextInput } from 'react-native';
 const categories: CategoryCard[] = [
@@ -91,7 +86,7 @@ const Home = () => {
         <Image
           source={{ uri: 'https://img.icons8.com/stickers/256/search.png' }}
           style={styles.imageInput}
-          resizeMode="cover"
+          resizeMode="center"
           alt="Alternate Text"
         />
         <TextInput
@@ -106,10 +101,7 @@ const Home = () => {
         contentContainerStyle={styles.paddingBottom}>
         <Categories categories={categories} />
 
-        <FeaturedRow
-          title="Featured"
-          description=" Something you may like"
-        />
+        <FeaturedRow title="Featured" description=" Something you may like" />
         <ScrollView
           horizontal
           contentContainerStyle={styles.padding}
@@ -118,10 +110,7 @@ const Home = () => {
           <LocationCard locations={locations} />
         </ScrollView>
 
-        <FeaturedRow
-          title="Trend"
-          description=" Locations that people love"
-        />
+        <FeaturedRow title="Trend" description=" Locations that people love" />
         <ScrollView
           horizontal
           contentContainerStyle={styles.padding}
@@ -130,10 +119,7 @@ const Home = () => {
           <LocationCard locations={locations} />
         </ScrollView>
 
-        <FeaturedRow
-          title="Top visit"
-          description=" Everyone best choice!"
-        />
+        <FeaturedRow title="Top visit" description=" Everyone best choice!" />
         <ScrollView
           horizontal
           contentContainerStyle={styles.padding}
@@ -141,7 +127,6 @@ const Home = () => {
           pt={4}>
           <LocationCard locations={locations} />
         </ScrollView>
-
       </ScrollView>
     </SafeAreaView>
   );

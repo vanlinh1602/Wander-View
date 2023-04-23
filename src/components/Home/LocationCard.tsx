@@ -11,8 +11,8 @@ type Props = {
 const LocationCard = ({ locations }: Props) => {
   return (
     <View style={ styles.flexRow }>
-    { locations.map(location => (
-    <TouchableOpacity style={styles.locationCard}>
+    { locations.map((location, index) => (
+    <TouchableOpacity key={index} style={styles.locationCard}>
       <Image
       style={styles.imageLocation}
        source={{
@@ -32,7 +32,6 @@ const LocationCard = ({ locations }: Props) => {
         <AntIcon name="enviroment" color="gray" size={20} />
         <Text style={styles.locationAddress}> Nearby .{location.address}</Text>
       </View>
-
 
       </View>
     </TouchableOpacity>

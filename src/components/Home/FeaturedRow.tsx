@@ -1,18 +1,16 @@
 import { Text, View } from 'native-base';
 import React from 'react';
 import AntIcon from 'react-native-vector-icons/AntDesign';
+import styles from './styles';
 
-
-const FeaturedRow = ({ title, description }:any) => {
+const FeaturedRow = ({ title, description } : {title: string; description: string}) => {
   return (
     <View>
-      <View marginTop={-2} flexDirection={'row'} alignItems={'center'} p={3} justifyContent={'space-between'}>
-        <Text fontSize={30} fontWeight={'bold'}>{title}</Text>
-        <AntIcon name="arrowright" color="purple" size={29} />
+      <View style={styles.viewFeature}>
+        <Text style={styles.textFeature}>{title}</Text>
+        <AntIcon name="arrowright" color="purple" size={30} />
       </View>
-
-        <Text fontSize={17} px={4} color={'blue.700'} marginTop={-4}>{description}</Text>
-
+        <Text style={styles.descFeature}>{description}</Text>
     </View>
   );
 };

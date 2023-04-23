@@ -15,8 +15,8 @@ const Categories = ({ categories }: Props) => {
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={S.scrollView}>
       <View flexDirection={'row'}>
-        {categories.map(category => (
-          <TouchableOpacity style={S.touchableOpacity}>
+        {categories.map((category, index) => (
+          <TouchableOpacity key={index} style={S.touchableOpacity}>
             <View style={S.view}>
               <Image
                 source={{

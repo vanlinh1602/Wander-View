@@ -1,23 +1,17 @@
-/* eslint-disable react/react-in-jsx-scope */
 import {
-  Box,
-  Divider,
-  Flex,
   Image,
-  Input,
   ScrollView,
   Text,
-  VStack,
   View,
 } from 'native-base';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import Categories from '../../components/Home/Categories';
 import FeaturedRow from '../../components/Home/FeaturedRow';
 import styles from './styles';
 import type { CategoryCard, LocationCards } from '../../components/Home/type';
 import LocationCard from '../../components/Home/LocationCard';
-
+import React from 'react';
+import { TextInput } from 'react-native';
 const categories: CategoryCard[] = [
   {
     imgUrl: 'https://cdn-icons-png.flaticon.com/512/10397/10397062.png',
@@ -43,146 +37,111 @@ const categories: CategoryCard[] = [
 
 const locations: LocationCards[] = [
   {
-    imgUrl:'https://globalgrasshopper.com/wp-content/uploads/2011/11/Top-10-of-the-most-beautiful-places-to-visit-in-Vietnam.jpg',
+    imgUrl:
+      'https://globalgrasshopper.com/wp-content/uploads/2011/11/Top-10-of-the-most-beautiful-places-to-visit-in-Vietnam.jpg',
     title: 'Heaven',
-    rating:'4.5',
-    genre:'Mountain',
-    address : ' 12 Suoi Tien',
+    rating: '4.5',
+    genre: 'Mountain',
+    address: ' 12 Suoi Tien',
   },
   {
-    imgUrl:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXQUcZ4vbrvWpgSJEZ3DEVDnx_ZqQTojyeo6ksrLdapFAIOZetsRls3isNUFgjFnfoh3M&usqp=CAU',
-    title:' Waterfall',
-    rating:'4.0',
-    genre:'Mountain',
-    address : '43 Long Coast',
+    imgUrl:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXQUcZ4vbrvWpgSJEZ3DEVDnx_ZqQTojyeo6ksrLdapFAIOZetsRls3isNUFgjFnfoh3M&usqp=CAU',
+    title: ' Waterfall',
+    rating: '4.0',
+    genre: 'Mountain',
+    address: '43 Long Coast',
   },
   {
-    imgUrl:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9s_zZrFrYU4J9pEMWyjKdupraMMxXyPsFZg&usqp=CAU',
-    title:'Jurasic Park',
-    rating:'4.0',
-    genre:'Camping',
-    address : ' 5 Mars',
+    imgUrl:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9s_zZrFrYU4J9pEMWyjKdupraMMxXyPsFZg&usqp=CAU',
+    title: 'Jurasic Park',
+    rating: '4.0',
+    genre: 'Camping',
+    address: ' 5 Mars',
   },
 ];
 
 const Home = () => {
   return (
     <SafeAreaView>
-      {/* Header*/}
-      <Flex direction="row" safeAreaTop backgroundColor={'white'}>
-        <View margin={2} flex={1}>
+      <View style={styles.flex}>
+        <View style={styles.welcomeView}>
           <Text style={styles.helloLine}>
-            {' '}
-            Hello <Text color={'orange.600'}>Traveler!</Text>
+            Hello <Text style={styles.orangeText}>Traveler!</Text>
           </Text>
           <Text style={styles.introLine}>
-            {' '}
-            Let's discover a new <Text color={'purple.600'}>
-              adventure
-            </Text>{' '}
+            Let's discover a new{' '}
+            <Text style={styles.purpleText}>adventure</Text>
           </Text>
         </View>
 
-        <View margin={2} alignItems={'center'}>
+        <View style={styles.avaView}>
           <Image
-            h={16}
-            w={16}
-            borderRadius={100}
+            style={styles.avaImage}
             source={{
               uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiKUBafiNEc-HcMtgslV-6hCBtBrsBxYM5Bc75D_RB2FA45GvKzJi2py20b6BlwK3LadY&usqp=CAU',
             }}
             alt="Alternate Text"
           />
         </View>
-      </Flex>
-
-      {/* Searching*/}
-      <View bgColor={'white'}>
-        <VStack
-          my="3"
-          space={5}
-          w="100%"
-          maxW="500px"
-          divider={
-            <Box px="2">
-              <Divider />
-            </Box>
-          }>
-          <VStack w="85%" space={5} alignSelf="center">
-            <Input
-              placeholder="Search"
-              variant={'filled'}
-              width="97%"
-              shadow={4}
-              borderRadius="20"
-              py="2"
-              px="5"
-              InputLeftElement={
-                <EvilIcons name="search" color="black" size={40} />
-              }
-            />
-          </VStack>
-        </VStack>
       </View>
 
-      {/* Body*/}
+      <View style={styles.searchBar}>
+        <Image
+          source={{ uri: 'https://img.icons8.com/stickers/256/search.png' }}
+          style={styles.imageInput}
+          resizeMode="cover"
+          alt="Alternate Text"
+        />
+        <TextInput
+          style={styles.inputLocation}
+          placeholder="Input Location"
+          placeholderTextColor={'gray'}
+        />
+      </View>
+
       <ScrollView
         bgColor={'gray.100'}
         contentContainerStyle={styles.paddingBottom}>
-        {/* Category*/}
         <Categories categories={categories} />
 
-        {/* Feature Row*/}
         <FeaturedRow
-          id="1"
           title="Featured"
           description=" Something you may like"
         />
         <ScrollView
-        horizontal
-        contentContainerStyle={styles.padding}
-        showsHorizontalScrollIndicator={false}
-        pt={4}
-        >
-        <LocationCard locations={locations}/>
+          horizontal
+          contentContainerStyle={styles.padding}
+          showsHorizontalScrollIndicator={false}
+          pt={4}>
+          <LocationCard locations={locations} />
         </ScrollView>
 
-        {/* Trending Row*/}
         <FeaturedRow
-          id="2"
           title="Trend"
           description=" Locations that people love"
         />
         <ScrollView
-        horizontal
-        contentContainerStyle={styles.padding}
-        showsHorizontalScrollIndicator={false}
-        pt={4}
-      >
-        <LocationCard locations={locations}/>
+          horizontal
+          contentContainerStyle={styles.padding}
+          showsHorizontalScrollIndicator={false}
+          pt={4}>
+          <LocationCard locations={locations} />
         </ScrollView>
 
-
-        {/* Top Visit Row*/}
         <FeaturedRow
-          id="3"
           title="Top visit"
           description=" Everyone best choice!"
         />
         <ScrollView
-        horizontal
-        contentContainerStyle={styles.padding}
-        showsHorizontalScrollIndicator={false}
-        pt={4}
-        >
-        <LocationCard locations={locations}/>
+          horizontal
+          contentContainerStyle={styles.padding}
+          showsHorizontalScrollIndicator={false}
+          pt={4}>
+          <LocationCard locations={locations} />
         </ScrollView>
 
-
-        {/* Le duoi cua Home*/}
-        <View>
-          <Text fontSize={42}>hello</Text>
-        </View>
       </ScrollView>
     </SafeAreaView>
   );

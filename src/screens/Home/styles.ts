@@ -68,6 +68,7 @@ export default StyleSheet.create({
     backgroundColor : 'white',
     borderColor: 'purple',
     elevation:5,
+    marginVertical:5,
   },
   imageInput: {
     width: 40,

@@ -1,77 +1,134 @@
-import React, { useState } from 'react';
-import {
-  Box,
-  Button,
-  Center,
-  HStack,
-  Heading,
-  Link,
-  Switch,
-  Text,
-  VStack,
-  useColorMode,
-} from 'native-base';
-import { post } from '../../services';
-// Color Switch Component
-function ToggleDarkMode() {
-  const { colorMode, toggleColorMode } = useColorMode();
-  return (
-    <HStack space={2} alignItems="center">
-      <Text>Dark</Text>
-      <Switch
-        isChecked={colorMode === 'light'}
-        onToggle={toggleColorMode}
-        aria-label={
-          colorMode === 'light' ? 'switch to dark mode' : 'switch to light mode'
-        }
-      />
-      <Text>Light</Text>
-    </HStack>
-  );
-}
+import { Image, ScrollView, Text, View } from 'native-base';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import Categories from './catalogs/Categories';
+import FeaturedRow from './catalogs/FeaturedRow';
+import styles from './styles';
+import type { CategoryCard, LocationCards } from './catalogs/type';
+import LocationCard from './catalogs/LocationCard';
+import React from 'react';
+import { TextInput } from 'react-native';
+const categories: CategoryCard[] = [
+  {
+    imgUrl: 'https://cdn-icons-png.flaticon.com/512/10397/10397062.png',
+    title: 'Camping',
+  },
+  {
+    imgUrl: 'https://cdn-icons-png.flaticon.com/512/4336/4336883.png',
+    title: 'Beach',
+  },
+  {
+    imgUrl: 'https://cdn-icons-png.flaticon.com/512/10180/10180302.png',
+    title: 'Kayak',
+  },
+  {
+    imgUrl: 'https://cdn-icons-png.flaticon.com/512/2847/2847264.png',
+    title: 'Mount',
+  },
+  {
+    imgUrl: 'https://cdn-icons-png.flaticon.com/512/2321/2321588.png',
+    title: 'Forest',
+  },
+];
+
+const locations: LocationCards[] = [
+  {
+    imgUrl:
+      'https://globalgrasshopper.com/wp-content/uploads/2011/11/Top-10-of-the-most-beautiful-places-to-visit-in-Vietnam.jpg',
+    title: 'Heaven',
+    rating: '4.5',
+    genre: 'Mountain',
+    address: ' 12 Suoi Tien',
+  },
+  {
+    imgUrl:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXQUcZ4vbrvWpgSJEZ3DEVDnx_ZqQTojyeo6ksrLdapFAIOZetsRls3isNUFgjFnfoh3M&usqp=CAU',
+    title: ' Waterfall',
+    rating: '4.0',
+    genre: 'Mountain',
+    address: '43 Long Coast',
+  },
+  {
+    imgUrl:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9s_zZrFrYU4J9pEMWyjKdupraMMxXyPsFZg&usqp=CAU',
+    title: 'Jurasic Park',
+    rating: '4.0',
+    genre: 'Camping',
+    address: ' 5 Mars',
+  },
+];
+
 const Home = () => {
-  const [message, setMessage] = useState();
   return (
-    <Center
-      _dark={{ bg: 'blueGray.900' }}
-      _light={{ bg: '#FCFBFE' }}
-      px={4}
-      flex={1}>
-      <VStack space={5} alignItems="center">
-        <Heading size="lg">Welcome to NativeBase</Heading>
-        <HStack space={2} alignItems="center">
-          <Text>Edit</Text>
-          <Box
-            px={2}
-            py={1}
-            _dark={{ bg: 'blueGray.800' }}
-            _light={{ bg: 'blueGray.200' }}>
-            App.js
-          </Box>
-          <Text>and save to reload.</Text>
-        </HStack>
-        <Link href="https://docs.nativebase.io" isExternal>
-          <Text color="primary.500" underline fontSize={'xl'}>
-            Learn NativeBase
+    <SafeAreaView>
+      <View style={styles.flex}>
+        <View style={styles.welcomeView}>
+          <Text style={styles.helloLine}>
+            Hello <Text style={styles.orangeText}>Traveler!</Text>
           </Text>
-        </Link>
-        <Text>{message}</Text>
+          <Text style={styles.introLine}>
+            Let's discover a new{' '}
+            <Text style={styles.purpleText}>adventure</Text>
+          </Text>
+        </View>
 
-        <Button
-          onPress={async () => {
-            const data = {
-              name: 'Weather App',
-              email: 'weatherapp@gmail.com',
-            };
-            const result = await post('/api/user', data);
+        <View style={styles.avaView}>
+          <Image
+            style={styles.avaImage}
+            source={{
+              uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiKUBafiNEc-HcMtgslV-6hCBtBrsBxYM5Bc75D_RB2FA45GvKzJi2py20b6BlwK3LadY&usqp=CAU',
+            }}
+            alt="Alternate Text"
+          />
+        </View>
+      </View>
 
-            setMessage(result.message);
-          }}>
-          Call Backend
-        </Button>
-        <ToggleDarkMode />
-      </VStack>
-    </Center>
+      <View style={styles.searchBar}>
+        <Image
+          source={{ uri: 'https://img.icons8.com/stickers/256/search.png' }}
+          style={styles.imageInput}
+          resizeMode="center"
+          alt="Alternate Text"
+        />
+        <TextInput
+          style={styles.inputLocation}
+          placeholder="Input Location"
+          placeholderTextColor={'gray'}
+        />
+      </View>
+
+      <ScrollView
+        bgColor={'gray.100'}
+        contentContainerStyle={styles.paddingBottom}>
+        <Categories categories={categories} />
+
+        <FeaturedRow title="Featured" description=" Something you may like" />
+        <ScrollView
+          horizontal
+          contentContainerStyle={styles.padding}
+          showsHorizontalScrollIndicator={false}
+          pt={4}>
+          <LocationCard locations={locations} />
+        </ScrollView>
+
+        <FeaturedRow title="Trend" description=" Locations that people love" />
+        <ScrollView
+          horizontal
+          contentContainerStyle={styles.padding}
+          showsHorizontalScrollIndicator={false}
+          pt={4}>
+          <LocationCard locations={locations} />
+        </ScrollView>
+
+        <FeaturedRow title="Top visit" description=" Everyone best choice!" />
+        <ScrollView
+          horizontal
+          contentContainerStyle={styles.padding}
+          showsHorizontalScrollIndicator={false}
+          pt={4}>
+          <LocationCard locations={locations} />
+        </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 export default Home;

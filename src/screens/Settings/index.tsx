@@ -1,8 +1,8 @@
-import React from 'react';
 import { Avatar, Button, Center, Text } from 'native-base';
+import React from 'react';
 
-import styles from './styles';
 import { avatars } from '../../lib/assets';
+import styles from './styles';
 
 function Settings() {
   return (

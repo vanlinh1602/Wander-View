@@ -1,6 +1,7 @@
 import { Text, View } from 'native-base';
 import React from 'react';
 import AntIcon from 'react-native-vector-icons/AntDesign';
+
 import styles from './styles';
 
 const FeaturedRow = ({

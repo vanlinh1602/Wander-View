@@ -1,29 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import auth from '@react-native-firebase/auth';
 import {
   Box,
   Button,
   Center,
-  HStack,
   Heading,
+  HStack,
   Input,
   Pressable,
   Stack,
   Text,
 } from 'native-base';
+import React, { useEffect, useState } from 'react';
 import { ImageBackground } from 'react-native';
+import { useSelector } from 'react-redux';
+
+import { SignUp, Waiting } from '../../components';
 import { images } from '../../lib/assets';
-import S from './styles';
 import {
   AntDesign,
   FontAwesome,
   Ionicons,
   MaterialIcons,
 } from '../../lib/icons';
-import auth from '@react-native-firebase/auth';
-import type { LoginInfo } from '../../types/login';
 import { selectLoadingUser } from '../../redux/selectors/user';
-import { useSelector } from 'react-redux';
-import { SignUp, Waiting } from '../../components';
+import type { LoginInfo } from '../../types/login';
+import S from './styles';
 
 type Props = {
   navigation?: any;

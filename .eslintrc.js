@@ -1,6 +1,7 @@
 module.exports = {
   root: true,
   extends: ['@react-native-community', 'prettier'],
+  plugins: ['react', 'simple-import-sort', 'prettier'],
   rules: {
     'no-underscore-dangle': 0,
     'no-useless-escape': 0,
@@ -52,15 +53,7 @@ module.exports = {
     'spaced-comment': 'error',
     yoda: 'error',
     'prettier/prettier': 'off',
-    'sort-imports': [
-      'error',
-      {
-        ignoreCase: false,
-        ignoreDeclarationSort: true,
-        ignoreMemberSort: false,
-        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
-        allowSeparatedGroups: true,
-      },
-    ],
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
   },
 };

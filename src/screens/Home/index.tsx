@@ -1,12 +1,13 @@
 import { Image, ScrollView, Text, View } from 'native-base';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import styles from './styles';
 import React from 'react';
 import { TextInput } from 'react-native';
-import type { CategoryCard, LocationCards } from './components/type';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 import Categories from './components/Categories';
 import FeaturedRow from './components/FeaturedRow';
 import LocationCard from './components/LocationCard';
+import type { CategoryCard, LocationCards } from './components/type';
+import styles from './styles';
 const categories: CategoryCard[] = [
   {
     imgUrl: 'https://cdn-icons-png.flaticon.com/512/10397/10397062.png',

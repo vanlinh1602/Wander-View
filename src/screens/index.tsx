@@ -10,6 +10,7 @@ import { AntDesign, Ionicons, MaterialCommunityIcons } from '../lib/icons';
 import { actions } from '../redux/reducers/user';
 import Account from './Account';
 import Home from './Home';
+import Location from './Location';
 import Settings from './Settings';
 
 const Tab = createBottomTabNavigator();
@@ -45,7 +46,7 @@ function Workspace() {
         />
         <Tab.Screen
           name="location"
-          component={Settings}
+          component={Location}
           options={{
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="grid" color={color} size={size} />

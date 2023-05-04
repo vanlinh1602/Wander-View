@@ -1,6 +1,7 @@
-import React from 'react';
 import { Spinner } from 'native-base';
+import React from 'react';
 import { View } from 'react-native';
+
 import S from './styles';
 
 const Waiting = () => {

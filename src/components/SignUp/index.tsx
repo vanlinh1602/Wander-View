@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { Button, FormControl, Input, Modal, Pressable } from 'native-base';
-import { MaterialIcons } from '../../lib/icons';
-import S from './styles';
-import type { LoginInfo } from '../../types/login';
 import auth from '@react-native-firebase/auth';
+import { Button, FormControl, Input, Modal, Pressable } from 'native-base';
+import React, { useState } from 'react';
+
+import { MaterialIcons } from '../../lib/icons';
+import type { LoginInfo } from '../../types/login';
+import S from './styles';
 
 type Props = {
   onClose: () => void;

@@ -1,6 +1,7 @@
-import { Image, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import AntIcon from 'react-native-vector-icons/AntDesign';
+
 import styles from './styles';
 import type { LocationCards } from './type';
 

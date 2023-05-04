@@ -1,4 +1,5 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import auth from '@react-native-firebase/auth';
+import _ from 'lodash';
 import {
   Avatar,
   Button,
@@ -10,19 +11,18 @@ import {
   Text,
   VStack,
 } from 'native-base';
-
-import S from './styles';
-import auth from '@react-native-firebase/auth';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
+import { SelectAvatar, Waiting } from '../../components';
+import { avatars } from '../../lib/assets';
+import { Feather, MaterialIcons } from '../../lib/icons';
 import { actions } from '../../redux/reducers/user';
 import { selectLoadingUser, selectUser } from '../../redux/selectors/user';
-import { Feather, MaterialIcons } from '../../lib/icons';
 import Infomation from './catalogs/Infomation';
 import Notification from './catalogs/Notification';
 import Saved from './catalogs/Saved';
-import { SelectAvatar, Waiting } from '../../components';
-import { avatars } from '../../lib/assets';
-import _ from 'lodash';
+import S from './styles';
 type Props = {
   navigation?: any;
 };

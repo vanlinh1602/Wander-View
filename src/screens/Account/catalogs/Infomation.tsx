@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import moment from 'moment';
 import {
   Button,
   FormControl,
@@ -7,13 +7,14 @@ import {
   Pressable,
   View,
 } from 'native-base';
-import { Feather } from '../../../lib/icons';
-import type { UserInfo } from '../../../redux/types/users';
+import React, { useState } from 'react';
 import DatePicker from 'react-native-date-picker';
-import moment from 'moment';
-import S from './styles';
 import { useDispatch } from 'react-redux';
+
+import { Feather } from '../../../lib/icons';
 import { actions } from '../../../redux/reducers/user';
+import type { UserInfo } from '../../../redux/types/users';
+import S from './styles';
 
 type Props = {
   userInfo: UserInfo;

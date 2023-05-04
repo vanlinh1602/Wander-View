@@ -1,8 +1,9 @@
-import React from 'react';
 import { ScrollView, View } from 'native-base';
+import React from 'react';
 import { Image, Text, TouchableOpacity } from 'react-native';
-import type { CategoryCard } from './type';
+
 import S from './styles';
+import type { CategoryCard } from './type';
 
 type Props = {
   categories: CategoryCard[];

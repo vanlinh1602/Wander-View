@@ -1,15 +1,16 @@
 /* eslint-disable react/no-unstable-nested-components */
-import React, { useEffect } from 'react';
+import auth from '@react-native-firebase/auth';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
+import AuthorizedScreen from '../../AuthorizedScreen';
 import { AntDesign, Ionicons, MaterialCommunityIcons } from '../lib/icons';
+import { actions } from '../redux/reducers/user';
+import Account from './Account';
 import Home from './Home';
 import Settings from './Settings';
-import Account from './Account';
-import { useDispatch } from 'react-redux';
-import { actions } from '../redux/reducers/user';
-import auth from '@react-native-firebase/auth';
-import AuthorizedScreen from '../../AuthorizedScreen';
 import { Detail } from '../components';
 
 const Tab = createBottomTabNavigator();

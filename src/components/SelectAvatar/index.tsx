@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { Avatar, Button, HStack, Modal, Pressable, View } from 'native-base';
-import { avatars } from '../../lib/assets';
-import { useDispatch } from 'react-redux';
-import { actions } from '../../redux/reducers/user';
 import _ from 'lodash';
+import { Avatar, Button, HStack, Modal, Pressable, View } from 'native-base';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { avatars } from '../../lib/assets';
 import { MaterialIcons } from '../../lib/icons';
+import { actions } from '../../redux/reducers/user';
 
 type Props = {
   userUid: string;

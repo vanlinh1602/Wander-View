@@ -24,7 +24,9 @@ const Catalog = [
   },
   { id: '4', icon: 'area-chart', title: 'Mountains' },
 ];
-
+const handlepress = () => {
+  console.log('Button Pressed');
+};
 type Prop = {
   image: string;
   name: string;
@@ -61,10 +63,11 @@ const Detail = ({ image, name, location, rating, description }: Prop) => {
               fontSize: 20,
               color: '#FFF',
               marginBottom: 10,
+              marginRight: 100,
             }}>
             {location}
-            {'   '}
-            <Icon name="star" size={20} color={'#fff'} />
+            {'    '}
+            <Icon style={S.icon} name="star" size={20} color={'#fff'} />
             <Text
               style={{
                 width: '70%',
@@ -113,12 +116,13 @@ const Detail = ({ image, name, location, rating, description }: Prop) => {
             Add plan
           </Text>
         </View>
-
-        <View style={S.bookNowBtn}>
-          <Text style={{ color: '#fff', fontSize: 16, fontWeight: 'bold' }}>
-            Review
-          </Text>
-        </View>
+        <TouchableOpacity onPress={handlepress}>
+          <View style={S.bookNowBtn}>
+            <Text style={{ color: '#fff', fontSize: 16, fontWeight: 'bold' }}>
+              Review
+            </Text>
+          </View>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );

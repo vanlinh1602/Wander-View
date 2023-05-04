@@ -84,4 +84,9 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  icon: {
+    marginLeft: 10,
+    paddingLeft: 50,
+    display: 'flex',
+  },
 });

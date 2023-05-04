@@ -43,3 +43,9 @@ const backgroundLogin = require('../assets/images/background_login.jpg');
 export const images = {
   backgroundLogin,
 };
+const location1 = require('../assets/locations/location1.jpg');
+const location3 = require('../assets/locations/location3.jpg');
+export const locations = {
+  location1,
+  location3,
+};

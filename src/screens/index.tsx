@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import { actions } from '../redux/reducers/user';
 import auth from '@react-native-firebase/auth';
 import AuthorizedScreen from '../../AuthorizedScreen';
+import { Detail } from '../components';
 
 const Tab = createBottomTabNavigator();
 
@@ -44,13 +45,21 @@ function Workspace() {
         />
         <Tab.Screen
           name="location"
-          component={Settings}
           options={{
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="grid" color={color} size={size} />
             ),
-          }}
-        />
+          }}>
+          {() => (
+            <Detail
+              image="https://asiasociety.org/files/uploads/265images/131106_POD_the_philippines(1).jpg"
+              name="Siargao island"
+              location="Philipines"
+              rating={5.0}
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Consequat nisl vel pretium lectus quam id leo. Velit euismod in pellentesque massa placerat duis ultricies lacus sed. Justo laoreet sit amet cursus sit."
+            />
+          )}
+        </Tab.Screen>
         <Tab.Screen
           name="Like"
           component={Settings}

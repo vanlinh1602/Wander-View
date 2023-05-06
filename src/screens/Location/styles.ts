@@ -42,4 +42,7 @@ export default StyleSheet.create({
     marginHorizontal: 20,
     marginVertical: 5,
   },
+  flexColumn: {
+    flexDirection: 'column',
+  },
 });

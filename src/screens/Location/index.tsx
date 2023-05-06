@@ -6,7 +6,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import Categories from './components/Categories';
 import LocationCard from './components/LocationCard';
-import type { CategoryCard, LocationCards } from './components/type';
+import type { CategoryCard, Location as LocationInfo } from './components/type';
 import styles from './styles';
 const categories: CategoryCard[] = [
   {
@@ -31,7 +31,7 @@ const categories: CategoryCard[] = [
   },
 ];
 
-const locations: LocationCards[] = [
+const locations: LocationInfo[] = [
   {
     imgUrl:
       'https://topdiemden.com/wp-content/uploads/2019/10/bitexco.jpg?x72370',
@@ -105,7 +105,11 @@ const Location = () => {
           contentContainerStyle={styles.padding}
           showsHorizontalScrollIndicator={false}
           pt={4}>
-          <LocationCard locations={locations} />
+          <View style={styles.flexColumn}>
+            {locations.map(location => (
+              <LocationCard location={location} />
+            ))}
+          </View>
         </ScrollView>
 
         <ScrollView
@@ -113,7 +117,11 @@ const Location = () => {
           contentContainerStyle={styles.padding}
           showsHorizontalScrollIndicator={false}
           pt={4}>
-          <LocationCard locations={locations} />
+          <View style={styles.flexColumn}>
+            {locations.map(location => (
+              <LocationCard location={location} />
+            ))}
+          </View>
         </ScrollView>
 
         <ScrollView
@@ -121,7 +129,11 @@ const Location = () => {
           contentContainerStyle={styles.padding}
           showsHorizontalScrollIndicator={false}
           pt={4}>
-          <LocationCard locations={locations} />
+          <View style={styles.flexColumn}>
+            {locations.map(location => (
+              <LocationCard location={location} />
+            ))}
+          </View>
         </ScrollView>
       </ScrollView>
     </SafeAreaView>

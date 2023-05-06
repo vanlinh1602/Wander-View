@@ -3,7 +3,7 @@ export type CategoryCard = {
   title: string;
 };
 
-export type LocationCards = {
+export type Location = {
   imgUrl: string;
   title: string;
   rating: string;

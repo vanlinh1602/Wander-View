@@ -1,19 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
+  FlatList,
   ImageBackground,
   SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  View,
   Text,
   TouchableOpacity,
-  FlatList,
+  View,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import S from './styles';
-import { locations } from '../../lib/assets';
+
 import { Fontisto } from '../../lib/icons';
-import { ScrollView } from 'native-base';
+import S from './styles';
 const Catalog = [
   { id: '1', icon: 'tent', title: 'Camping' },
   { id: '2', icon: 'island', title: 'Beach' },
@@ -27,7 +24,7 @@ const Catalog = [
 const handlepress = () => {
   console.log('Button Pressed');
 };
-type Prop = {
+type Props = {
   image: string;
   name: string;
   location: string;
@@ -35,7 +32,13 @@ type Prop = {
   description: string;
 };
 
-const Detail = ({ image, name, location, rating, description }: Prop) => {
+const LocaitonDetail = ({
+  image,
+  name,
+  location,
+  rating,
+  description,
+}: Props) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
       <ImageBackground style={{ flex: 0.45 }} source={{ uri: image }}>
@@ -128,4 +131,4 @@ const Detail = ({ image, name, location, rating, description }: Prop) => {
   );
 };
 
-export default Detail;
+export default LocaitonDetail;

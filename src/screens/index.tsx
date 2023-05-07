@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import AuthorizedScreen from '../../AuthorizedScreen';
-import { Detail } from '../components';
+import { LocaitonDetail } from '../components';
 import { AntDesign, Ionicons, MaterialCommunityIcons } from '../lib/icons';
 import { actions } from '../redux/reducers/user';
 import Account from './Account';
@@ -46,13 +46,22 @@ function Workspace() {
         />
         <Tab.Screen
           name="location"
+          component={Location}
           options={{
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="grid" color={color} size={size} />
             ),
+          }}
+        />
+        <Tab.Screen
+          name="Like"
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <Ionicons name="heart" color={color} size={size} />
+            ),
           }}>
           {() => (
-            <Detail
+            <LocaitonDetail
               image="https://asiasociety.org/files/uploads/265images/131106_POD_the_philippines(1).jpg"
               name="Siargao island"
               location="Philipines"
@@ -61,15 +70,6 @@ function Workspace() {
             />
           )}
         </Tab.Screen>
-        <Tab.Screen
-          name="Like"
-          component={Location}
-          options={{
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="heart" color={color} size={size} />
-            ),
-          }}
-        />
         <Tab.Screen
           name="Account"
           options={{

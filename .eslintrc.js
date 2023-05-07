@@ -3,6 +3,7 @@ module.exports = {
   extends: ['@react-native-community', 'prettier'],
   plugins: ['react', 'simple-import-sort', 'prettier'],
   rules: {
+    'react-native/no-inline-styles': 0,
     'no-underscore-dangle': 0,
     'no-useless-escape': 0,
     'no-restricted-globals': 'warn',

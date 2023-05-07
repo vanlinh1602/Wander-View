@@ -8,7 +8,8 @@ import { useDispatch } from 'react-redux';
 import AuthorizedScreen from '../../AuthorizedScreen';
 import { LocaitonDetail } from '../components';
 import { AntDesign, Ionicons, MaterialCommunityIcons } from '../lib/icons';
-import { actions } from '../redux/reducers/user';
+import { actions as locationActions } from '../redux/reducers/location';
+import { actions as userActions } from '../redux/reducers/user';
 import Account from './Account';
 import Home from './Home';
 import Location from './Location';
@@ -21,11 +22,19 @@ function Workspace() {
     auth().onAuthStateChanged(currentUser => {
       if (currentUser) {
         dispatch(
-          actions.signIn({ email: currentUser.email!, uid: currentUser.uid }),
+          userActions.signIn({
+            email: currentUser.email!,
+            uid: currentUser.uid,
+          }),
         );
       }
     });
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(locationActions.getLocations());
+  }, [dispatch]);
+
   return (
     <NavigationContainer>
       <Tab.Navigator

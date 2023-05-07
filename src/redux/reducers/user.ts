@@ -1,8 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { SignInAction, User, UserInfo } from '../types/users';
+import { createSlice } from '@reduxjs/toolkit';
 
-export const initialState: User = {
+import type { SignInAction, UserInfo, UserState } from '../types/users';
+
+export const initialState: UserState = {
   info: {},
   loading: false,
 };

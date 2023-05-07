@@ -1,9 +1,9 @@
+import type { PayloadAction } from '@reduxjs/toolkit';
 import { put, takeLatest } from 'redux-saga/effects';
 
+import { backendService } from '../../services';
 import { actions } from '../reducers/user';
 import type { SignInAction, UserInfo } from '../types/users';
-import { backendService } from '../../services';
-import type { PayloadAction } from '@reduxjs/toolkit';
 
 function* signIn(action: SignInAction) {
   const data = action.payload;

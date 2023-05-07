@@ -2,14 +2,10 @@ import { ScrollView, View } from 'native-base';
 import React from 'react';
 import { Image, Text, TouchableOpacity } from 'react-native';
 
+import { categories } from '../../../lib/options';
 import S from './styles';
-import type { CategoryCard } from './type';
 
-type Props = {
-  categories: CategoryCard[];
-};
-
-const Categories = ({ categories }: Props) => {
+const Categories = () => {
   return (
     <ScrollView
       horizontal

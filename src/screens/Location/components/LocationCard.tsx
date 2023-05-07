@@ -2,8 +2,8 @@ import React from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 
+import type { Location } from '../../../types/loaction';
 import styles from './styles';
-import type { Location } from './type';
 
 type Props = {
   location: Location;
@@ -11,7 +11,7 @@ type Props = {
 
 const LocationCard = ({ location }: Props) => {
   return (
-    <TouchableOpacity key={location.imgUrl} style={styles.locationCard}>
+    <TouchableOpacity style={styles.locationCard}>
       <Image
         style={styles.imageLocation}
         source={{

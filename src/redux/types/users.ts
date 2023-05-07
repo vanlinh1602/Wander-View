@@ -9,7 +9,7 @@ export type UserInfo = {
   avatar?: string;
 };
 
-export type User = {
+export type UserState = {
   info?: UserInfo;
   loading: boolean;
 };

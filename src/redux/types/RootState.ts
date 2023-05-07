@@ -1,5 +1,7 @@
-import type { User } from './users';
+import type { LocationState } from './location';
+import type { UserState } from './users';
 
 export type RootState = {
-  user: User;
+  user: UserState;
+  location: LocationState;
 };

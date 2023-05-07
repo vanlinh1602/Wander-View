@@ -1,6 +1,28 @@
-// This file to include some option can be used.
-
-export const time = {
-  am: 'Sáng',
-  pm: 'Chiều',
-};
+// icon using Fontisto
+export const categories = [
+  {
+    imgUrl: 'https://cdn-icons-png.flaticon.com/512/10397/10397062.png',
+    title: 'Camping',
+    icon: 'tent',
+  },
+  {
+    imgUrl: 'https://cdn-icons-png.flaticon.com/512/4336/4336883.png',
+    title: 'Beach',
+    icon: 'island',
+  },
+  {
+    imgUrl: 'https://cdn-icons-png.flaticon.com/512/10180/10180302.png',
+    title: 'Kayak',
+    icon: 'sait-boat',
+  },
+  {
+    imgUrl: 'https://cdn-icons-png.flaticon.com/512/2847/2847264.png',
+    title: 'Mount',
+    icon: 'area-chart',
+  },
+  {
+    imgUrl: 'https://cdn-icons-png.flaticon.com/512/2321/2321588.png',
+    title: 'Forest',
+    icon: 'holiday-village',
+  },
+];

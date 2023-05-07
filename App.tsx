@@ -1,6 +1,7 @@
-import React from 'react';
 import { NativeBaseProvider } from 'native-base';
+import React from 'react';
 import { Provider } from 'react-redux';
+
 import store from './src/redux';
 import Workspace from './src/screens';
 

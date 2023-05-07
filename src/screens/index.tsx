@@ -6,12 +6,12 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import AuthorizedScreen from '../../AuthorizedScreen';
+import { Detail } from '../components';
 import { AntDesign, Ionicons, MaterialCommunityIcons } from '../lib/icons';
 import { actions } from '../redux/reducers/user';
 import Account from './Account';
 import Home from './Home';
-import Settings from './Settings';
-import { Detail } from '../components';
+import Location from './Location';
 
 const Tab = createBottomTabNavigator();
 
@@ -63,7 +63,7 @@ function Workspace() {
         </Tab.Screen>
         <Tab.Screen
           name="Like"
-          component={Settings}
+          component={Location}
           options={{
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="heart" color={color} size={size} />

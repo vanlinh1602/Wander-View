@@ -4,10 +4,9 @@ import { TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
 
+import { Categories, LocationCard } from '../../components';
 import { selectLocations } from '../../redux/selectors/loaction';
-import Categories from './components/Categories';
 import FeaturedRow from './components/FeaturedRow';
-import LocationCard from './components/LocationCard';
 import styles from './styles';
 
 const Home = () => {
@@ -63,7 +62,12 @@ const Home = () => {
           showsHorizontalScrollIndicator={false}
           pt={4}>
           {locations.map((location, index) => (
-            <LocationCard key={index} location={location} />
+            <LocationCard
+              key={index}
+              location={location}
+              miniCard
+              style={{ marginRight: 10 }}
+            />
           ))}
         </ScrollView>
 
@@ -74,7 +78,12 @@ const Home = () => {
           showsHorizontalScrollIndicator={false}
           pt={4}>
           {locations.map((location, index) => (
-            <LocationCard key={index} location={location} />
+            <LocationCard
+              key={index}
+              location={location}
+              miniCard
+              style={{ marginRight: 10 }}
+            />
           ))}
         </ScrollView>
 
@@ -85,7 +94,12 @@ const Home = () => {
           showsHorizontalScrollIndicator={false}
           pt={4}>
           {locations.map((location, index) => (
-            <LocationCard key={index} location={location} />
+            <LocationCard
+              key={index}
+              location={location}
+              miniCard
+              style={{ marginRight: 10 }}
+            />
           ))}
         </ScrollView>
       </ScrollView>

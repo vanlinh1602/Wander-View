@@ -1,19 +1,24 @@
 import React from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Text, TouchableOpacity, View, ViewStyle } from 'react-native';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 
-import type { Location } from '../../../types/loaction';
+import type { Location } from '../../types/loaction';
 import styles from './styles';
 
 type Props = {
   location: Location;
+  miniCard?: boolean;
+  style?: ViewStyle;
 };
 
-const LocationCard = ({ location }: Props) => {
+const LocationCard = ({ location, miniCard, style = {} }: Props) => {
+  const imageSize = miniCard
+    ? { height: 160, width: 260 }
+    : { height: 234, width: 364 };
   return (
-    <TouchableOpacity style={styles.locationCard}>
+    <TouchableOpacity style={{ ...styles.locationCard, ...style }}>
       <Image
-        style={styles.imageLocation}
+        style={{ ...styles.imageLocation, ...imageSize }}
         source={{
           uri: location.imgUrl,
         }}

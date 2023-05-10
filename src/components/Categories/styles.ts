@@ -27,55 +27,14 @@ export default StyleSheet.create({
     marginTop: 2,
     marginBottom: 10,
   },
-  locationCard: {
-    backgroundColor: 'transparent',
-    borderRadius: 10,
-  },
-  imageLocation: {
-    height: 234,
-    width: 364,
-    borderRadius: 15,
-  },
-  paddingView: {
-    paddingHorizontal: 5,
-    paddingBottom: 10,
-    paddingTop: 5,
-  },
-  locationTitle: {
-    fontWeight: 'bold',
-    paddingTop: 2,
-    fontSize: 25,
-    color: 'black',
-    marginLeft: 10,
-  },
-  locationView: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginHorizontal: 10,
-  },
-  locationRating: {
-    fontSize: 18,
-    fontWeight: '500',
-    color: 'gray',
-  },
   greenText: {
     color: 'green',
-  },
-  addressView: {
-    flexDirection: 'row',
-    marginTop: 5,
-    marginLeft: 9,
-    alignItems: 'center',
-  },
-  locationAddress: {
-    fontSize: 18,
-    color: 'darkorange',
   },
   padding: {
     paddingHorizontal: 15,
   },
-  flexColumn: {
-    flexDirection: 'column',
+  flexRow: {
+    flexDirection: 'row',
   },
   viewFeature: {
     marginTop: -3,

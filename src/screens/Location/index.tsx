@@ -5,9 +5,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { useSelector } from 'react-redux';
 
+import { Categories, LocationCard } from '../../components';
 import { selectLocations } from '../../redux/selectors/loaction';
-import Categories from './components/Categories';
-import LocationCard from './components/LocationCard';
 import styles from './styles';
 
 const Location = () => {

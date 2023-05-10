@@ -7,7 +7,11 @@ import store from './src/redux';
 import Workspace from './src/screens';
 
 const theme = extendTheme({
-  fonts: FontFamily,
+  fonts: {
+    heading: FontFamily.bold,
+    body: FontFamily.regular,
+    mono: FontFamily.thin,
+  },
 });
 
 function App() {

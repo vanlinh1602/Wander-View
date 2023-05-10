@@ -9,6 +9,7 @@ export const FontFamily = {
   medium: 'Roboto-Medium',
   mediumItalic: 'Roboto-MediumItalic',
   regular: 'Roboto-Regular',
+  thin: 'Roboto-Thin',
   thinItalic: 'Roboto-ThinItalic',
 };
 

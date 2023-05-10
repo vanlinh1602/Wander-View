@@ -57,7 +57,7 @@ function Account({ navigation }: Props) {
     }
   };
   return (
-    <Center style={S.container} bg="#FCFBFE" fontFamily="body">
+    <Center style={S.container} bg="#FCFBFE">
       {loadingUser ? <Waiting /> : null}
       {selectAvatar ? (
         <SelectAvatar

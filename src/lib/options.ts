@@ -1,3 +1,17 @@
+export const FontFamily = {
+  black: 'Roboto-Black',
+  blackItalic: 'Roboto-BlackItalic',
+  bold: 'Roboto-Bold',
+  boldItalic: 'Roboto-BoldItalic',
+  italic: 'Roboto-Italic',
+  light: 'Roboto-Light',
+  lightItalic: 'Roboto-LightItalic',
+  medium: 'Roboto-Medium',
+  mediumItalic: 'Roboto-MediumItalic',
+  regular: 'Roboto-Regular',
+  thinItalic: 'Roboto-ThinItalic',
+};
+
 // icon using Fontisto
 export const categories = [
   {

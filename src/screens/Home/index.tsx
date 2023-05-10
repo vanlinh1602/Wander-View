@@ -15,7 +15,7 @@ const Home = () => {
 
   return (
     <SafeAreaView>
-      <View style={styles.flex}>
+      <View style={styles.flex} fontFamily="Roboto-Thin">
         <View style={styles.welcomeView}>
           <Text style={styles.helloLine}>
             Hello <Text style={styles.orangeText}>Traveler!</Text>

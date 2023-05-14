@@ -41,3 +41,19 @@ export const categories = [
     icon: 'holiday-village',
   },
 ];
+
+export const dataCateSelectList = [
+  { key: '1', value: 'Camping' },
+  { key: '2', value: 'Beach' },
+  { key: '3', value: 'Kayak' },
+  { key: '4', value: 'Mount' },
+  { key: '5', value: 'Forest' },
+];
+
+export const dataCitySelectList = [
+  { key: 'C1', value: 'Ho Chi Minh' },
+  { key: 'C2', value: 'Ha Noi' },
+  { key: 'C3', value: 'Da Nang' },
+  { key: 'C4', value: 'Vung Tau' },
+  { key: 'C5', value: 'Da Lat' },
+];

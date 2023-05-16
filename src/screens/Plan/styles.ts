@@ -4,6 +4,7 @@ import { FontFamily } from '../../lib/options';
 
 export default StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: '#AD7BE9',
   },
   eventList: {

@@ -19,7 +19,7 @@ const Header = () => (
         source={{
           uri: 'https://img.icons8.com/?size=512&id=40217&format=png',
         }}
-        style={{ height: 30, width: 30 }}
+        style={styles.iconBack}
       />
       <Text style={styles.headerText}>New Post</Text>
       <Text> </Text>

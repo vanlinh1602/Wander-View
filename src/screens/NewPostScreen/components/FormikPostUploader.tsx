@@ -114,7 +114,7 @@ const FormikPostUploader = () => {
               />
             </View>
             <Button
-              onPress={handleSubmit}
+              onPress={() => handleSubmit()}
               title="Share"
               disabled={!isValid}
               color={'orange'}

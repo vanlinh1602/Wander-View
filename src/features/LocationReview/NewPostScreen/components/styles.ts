@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { FontFamily } from '../../../lib/options';
+import { FontFamily } from '../../../../lib/options';
 
 export default StyleSheet.create({
   container: {

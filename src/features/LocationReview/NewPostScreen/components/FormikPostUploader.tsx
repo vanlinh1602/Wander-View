@@ -6,8 +6,8 @@ import { SelectList } from 'react-native-dropdown-select-list';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Yup from 'yup';
 
-import { dataCitySelectList } from '../../../lib/options';
-import { dataCateSelectList } from '../../../lib/options';
+import { dataCateSelectList } from '../../../../lib/options';
+import { dataCitySelectList } from '../../../../lib/options';
 import styles from './styles';
 const PLACEHOLDER_IMG = 'https://fomantic-ui.com/images/wireframe/image.png';
 
@@ -19,13 +19,16 @@ const uploadPostSchema = Yup.object().shape({
 const FormikPostUploader = () => {
   const [thumbnailUrl, setThumbnailUrl] = useState(PLACEHOLDER_IMG);
   const [chooseCity, setChooseCity] = useState();
-  const [Category, setCategory] = useState([]);
+  const [Category, setCategory] = useState();
+
   return (
     <Formik
       initialValues={{
         caption: '',
         imageUrl: '',
         location: '',
+        category: '',
+        city: '',
       }}
       onSubmit={values => console.log(values)}
       validationSchema={uploadPostSchema}

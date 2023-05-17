@@ -8,11 +8,11 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 
 import AuthorizedScreen from '../../AuthorizedScreen';
+import NewPostScreen from '../features/LocationReview/NewPostScreen';
 import { AntDesign } from '../lib/icons';
 import Account from '../screens/Account';
 import Home from '../screens/Home';
 import Location from '../screens/Location';
-import NewPostScreen from '../screens/NewPostScreen';
 import Plan from '../screens/Plan';
 // import Settings from '../screens/Settings';
 import { defautTabStyles, TabStyles } from './styles';

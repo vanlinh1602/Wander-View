@@ -87,10 +87,9 @@ function Plan() {
       <Text style={styles.header}>Your Plans</Text>
       <View style={{ borderBottomColor: 'white', borderBottomWidth: 2 }} />
       <FlatList
-        enableEmptySections={true}
         style={styles.eventList}
         data={eventList}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.id.toString()}
         renderItem={({ item, index }) => {
           return (
             <TouchableOpacity onPress={() => Alert.alert(item.task, item.time)}>

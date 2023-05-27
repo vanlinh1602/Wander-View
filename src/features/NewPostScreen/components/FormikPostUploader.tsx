@@ -22,7 +22,7 @@ const FormikPostUploader = () => {
   const [thumbnailUrl, setThumbnailUrl] = useState(PLACEHOLDER_IMG);
   const [chooseCity, setChooseCity] = useState();
   const [Category, setCategory] = useState([]);
-  const titles = categories.map(category => category.title);
+  const categoryOptions = categories.map(category => category.title);
 
   return (
     <Formik
@@ -99,7 +99,7 @@ const FormikPostUploader = () => {
             <View style={{ margin: 15 }}>
               <MultipleSelectList
                 setSelected={(val: any) => setCategory(val)}
-                data={titles}
+                data={categoryOptions}
                 save="value"
                 onSelect={() => console.log(Category)}
                 label="Categories"

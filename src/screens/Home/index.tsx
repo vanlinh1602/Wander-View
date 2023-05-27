@@ -9,7 +9,11 @@ import { selectLocations } from '../../redux/selectors/loaction';
 import FeaturedRow from './components/FeaturedRow';
 import styles from './styles';
 
-const Home = () => {
+type Props = {
+  navigation: any;
+};
+
+const Home = ({ navigation }: Props) => {
   const locations = useSelector(selectLocations);
 
   return (
@@ -67,6 +71,7 @@ const Home = () => {
               location={location}
               miniCard
               style={{ marginRight: 10 }}
+              navigation={navigation}
             />
           ))}
         </ScrollView>
@@ -83,6 +88,7 @@ const Home = () => {
               location={location}
               miniCard
               style={{ marginRight: 10 }}
+              navigation={navigation}
             />
           ))}
         </ScrollView>
@@ -99,6 +105,7 @@ const Home = () => {
               location={location}
               miniCard
               style={{ marginRight: 10 }}
+              navigation={navigation}
             />
           ))}
         </ScrollView>

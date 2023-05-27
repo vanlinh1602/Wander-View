@@ -2,7 +2,7 @@ import { ScrollView, View } from 'native-base';
 import React from 'react';
 import { Image, Text, TouchableOpacity } from 'react-native';
 
-import { categories } from '../../../lib/options';
+import { categories } from '../../lib/options';
 import S from './styles';
 
 const Categories = () => {

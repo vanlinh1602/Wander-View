@@ -13,7 +13,6 @@ export const FontFamily = {
   thinItalic: 'Roboto-ThinItalic',
 };
 
-// icon using Fontisto
 export const categories = [
   {
     imgUrl: 'https://cdn-icons-png.flaticon.com/512/10397/10397062.png',
@@ -40,14 +39,6 @@ export const categories = [
     title: 'Forest',
     icon: 'holiday-village',
   },
-];
-
-export const dataCateSelectList = [
-  { key: '1', value: 'Camping' },
-  { key: '2', value: 'Beach' },
-  { key: '3', value: 'Kayak' },
-  { key: '4', value: 'Mount' },
-  { key: '5', value: 'Forest' },
 ];
 
 export const dataCitySelectList = [

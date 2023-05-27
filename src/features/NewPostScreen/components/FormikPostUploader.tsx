@@ -9,8 +9,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Yup from 'yup';
 
-import { dataCateSelectList } from '../../../../lib/options';
-import { dataCitySelectList } from '../../../../lib/options';
+import { categories, dataCitySelectList } from '../../../lib/options';
 import styles from './styles';
 const PLACEHOLDER_IMG = 'https://fomantic-ui.com/images/wireframe/image.png';
 
@@ -23,6 +22,8 @@ const FormikPostUploader = () => {
   const [thumbnailUrl, setThumbnailUrl] = useState(PLACEHOLDER_IMG);
   const [chooseCity, setChooseCity] = useState();
   const [Category, setCategory] = useState([]);
+  const titles = categories.map(category => category.title);
+
   return (
     <Formik
       initialValues={{
@@ -98,7 +99,7 @@ const FormikPostUploader = () => {
             <View style={{ margin: 15 }}>
               <MultipleSelectList
                 setSelected={(val: any) => setCategory(val)}
-                data={dataCateSelectList}
+                data={titles}
                 save="value"
                 onSelect={() => console.log(Category)}
                 label="Categories"

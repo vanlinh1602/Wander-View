@@ -8,7 +8,7 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 
 import AuthorizedScreen from '../../AuthorizedScreen';
-import NewPostScreen from '../features/LocationReview/NewPostScreen';
+import NewPostScreen from '../features/NewPostScreen';
 import { AntDesign } from '../lib/icons';
 import Account from '../screens/Account';
 import Home from '../screens/Home';

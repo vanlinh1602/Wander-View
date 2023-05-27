@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import Tabs from '../navigation/tab';
+import NavigationRoute from '../navigation';
 import { actions as locationActions } from '../redux/reducers/location';
 import { actions as userActions } from '../redux/reducers/user';
 
@@ -28,7 +28,7 @@ function Workspace() {
 
   return (
     <NavigationContainer>
-      <Tabs />
+      <NavigationRoute />
     </NavigationContainer>
   );
 }

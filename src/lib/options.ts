@@ -13,7 +13,6 @@ export const FontFamily = {
   thinItalic: 'Roboto-ThinItalic',
 };
 
-// icon using Fontisto
 export const categories = [
   {
     imgUrl: 'https://cdn-icons-png.flaticon.com/512/10397/10397062.png',
@@ -40,4 +39,12 @@ export const categories = [
     title: 'Forest',
     icon: 'holiday-village',
   },
+];
+
+export const dataCitySelectList = [
+  { key: 'C1', value: 'Ho Chi Minh' },
+  { key: 'C2', value: 'Ha Noi' },
+  { key: 'C3', value: 'Da Nang' },
+  { key: 'C4', value: 'Vung Tau' },
+  { key: 'C5', value: 'Da Lat' },
 ];

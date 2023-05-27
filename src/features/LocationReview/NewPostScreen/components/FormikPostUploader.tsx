@@ -2,7 +2,10 @@ import { Formik } from 'formik';
 import { Divider, ScrollView } from 'native-base';
 import React, { useState } from 'react';
 import { Button, Image, Text, TextInput, View } from 'react-native';
-import { SelectList } from 'react-native-dropdown-select-list';
+import {
+  MultipleSelectList,
+  SelectList,
+} from 'react-native-dropdown-select-list';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Yup from 'yup';
 
@@ -19,16 +22,13 @@ const uploadPostSchema = Yup.object().shape({
 const FormikPostUploader = () => {
   const [thumbnailUrl, setThumbnailUrl] = useState(PLACEHOLDER_IMG);
   const [chooseCity, setChooseCity] = useState();
-  const [Category, setCategory] = useState();
-
+  const [Category, setCategory] = useState([]);
   return (
     <Formik
       initialValues={{
         caption: '',
         imageUrl: '',
         location: '',
-        category: '',
-        city: '',
       }}
       onSubmit={values => console.log(values)}
       validationSchema={uploadPostSchema}
@@ -96,13 +96,13 @@ const FormikPostUploader = () => {
             )}
             <Text style={styles.cateText}>Choose category :</Text>
             <View style={{ margin: 15 }}>
-              <SelectList
+              <MultipleSelectList
                 setSelected={(val: any) => setCategory(val)}
                 data={dataCateSelectList}
                 save="value"
-                boxStyles={styles.boxSelect}
-                inputStyles={styles.boxTextInput}
                 onSelect={() => console.log(Category)}
+                label="Categories"
+                boxStyles={styles.boxSelect}
               />
             </View>
             <Text style={styles.cateText}>Choose city :</Text>

@@ -44,6 +44,7 @@ const CustomTabBarButton = ({ children, onPress }: BottomTabBarButtonProps) => {
 const Tabs = () => {
   return (
     <Tab.Navigator
+      initialRouteName="home"
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,

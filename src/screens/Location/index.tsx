@@ -9,7 +9,11 @@ import { Categories, LocationCard } from '../../components';
 import { selectLocations } from '../../redux/selectors/loaction';
 import styles from './styles';
 
-const Location = () => {
+type Props = {
+  navigation: Navigation;
+};
+
+const Location = ({ navigation }: Props) => {
   const locations = useSelector(selectLocations);
   return (
     <SafeAreaView>
@@ -51,7 +55,11 @@ const Location = () => {
           pt={4}>
           <View style={styles.flexColumn}>
             {locations.map((location, index) => (
-              <LocationCard key={index} location={location} />
+              <LocationCard
+                key={index}
+                location={location}
+                navigation={navigation}
+              />
             ))}
           </View>
         </ScrollView>
@@ -63,7 +71,11 @@ const Location = () => {
           pt={4}>
           <View style={styles.flexColumn}>
             {locations.map((location, index) => (
-              <LocationCard key={index} location={location} />
+              <LocationCard
+                key={index}
+                location={location}
+                navigation={navigation}
+              />
             ))}
           </View>
         </ScrollView>
@@ -75,7 +87,11 @@ const Location = () => {
           pt={4}>
           <View style={styles.flexColumn}>
             {locations.map((location, index) => (
-              <LocationCard key={index} location={location} />
+              <LocationCard
+                key={index}
+                location={location}
+                navigation={navigation}
+              />
             ))}
           </View>
         </ScrollView>

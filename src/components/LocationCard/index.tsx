@@ -9,14 +9,22 @@ type Props = {
   location: Location;
   miniCard?: boolean;
   style?: ViewStyle;
+  navigation: Navigation;
 };
 
-const LocationCard = ({ location, miniCard, style = {} }: Props) => {
+const LocationCard = ({
+  location,
+  miniCard,
+  style = {},
+  navigation,
+}: Props) => {
   const imageSize = miniCard
     ? { height: 160, width: 260 }
     : { height: 234, width: 364 };
   return (
-    <TouchableOpacity style={{ ...styles.locationCard, ...style }}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate('locationDetail', location)}
+      style={{ ...styles.locationCard, ...style }}>
       <Image
         style={{ ...styles.imageLocation, ...imageSize }}
         source={{

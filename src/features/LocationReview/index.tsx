@@ -1,3 +1,4 @@
+import { HStack } from 'native-base';
 import React from 'react';
 import { FlatList, Image, ScrollView, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -38,17 +39,21 @@ const listComment = [
     user_star: 5,
   },
 ];
-const starArray = [1, 2, 3, 4, 5].map(i => i);
 
-const Rating = ({ key, rating }: { key: string; rating: boolean }) => (
-  <Icon key={key} name="star" color={rating ? 'orange' : 'lightgrey'} />
-);
+type Props = {
+  navigation: any;
+};
 
-const LocationReview = () => {
+const LocationReview = ({ navigation }: Props) => {
   return (
     <ScrollView>
       <View style={styles.header}>
-        <Icon name="arrow-back-ios" size={23} color={'##1a1818'} />
+        <Icon
+          onPress={() => (navigation as Navigation).goBack()}
+          name="arrow-back-ios"
+          size={23}
+          color={'##1a1818'}
+        />
       </View>
       <View>
         <FlatList
@@ -61,17 +66,19 @@ const LocationReview = () => {
               />
               <View style={styles.contentWrapperStyle}>
                 <Text style={styles.txtNameStyle}>{item.item.user_name}</Text>
+                <HStack>
+                  {[1, 2, 3, 4, 5].map(star => (
+                    <Icon
+                      name="star"
+                      color={
+                        star <= item.item.user_star ? 'orange' : 'lightgrey'
+                      }
+                    />
+                  ))}
+                </HStack>
                 <Text style={styles.txtEmailStyle}>
                   {item.item.user_comment}
                 </Text>
-                <div>
-                  {starArray.map(star => (
-                    <Rating
-                      key={star.toString()}
-                      rating={star < item.item.user_star}
-                    />
-                  ))}
-                </div>
               </View>
             </View>
           )}

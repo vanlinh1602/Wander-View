@@ -10,6 +10,7 @@ import {
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { Fontisto } from '../../lib/icons';
+import type { Location } from '../../types/loaction';
 import S from './styles';
 const Catalog = [
   { id: '1', icon: 'tent', title: 'Camping' },
@@ -21,29 +22,29 @@ const Catalog = [
   },
   { id: '4', icon: 'area-chart', title: 'Mountains' },
 ];
-const handlepress = () => {
-  console.log('Button Pressed');
-};
+
 type Props = {
-  image: string;
-  name: string;
-  location: string;
-  rating: number;
-  description: string;
+  route: any;
+  navigation: any;
 };
 
-const LocaitonDetail = ({
-  image,
-  name,
-  location,
-  rating,
-  description,
-}: Props) => {
+const LocaitonDetail = ({ route, navigation }: Props) => {
+  const params: Location = (route as Route).params;
+  const { imgUrl, title, rating, description, address } = params;
+
+  const handlepress = () => {
+    (navigation as Navigation).navigate('locationReview');
+  };
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
-      <ImageBackground style={{ flex: 0.45 }} source={{ uri: image }}>
+      <ImageBackground style={{ flex: 0.45 }} source={{ uri: imgUrl }}>
         <View style={S.header}>
-          <Icon name="arrow-back-ios" size={28} color={'#fff'} />
+          <Icon
+            onPress={() => navigation.goBack()}
+            name="arrow-back-ios"
+            size={28}
+            color={'#fff'}
+          />
           <Icon name="favorite" size={28} color={'#eb34de'} />
         </View>
         <View style={S.imageDetails}>
@@ -55,7 +56,7 @@ const LocaitonDetail = ({
               color: '#FFF',
               marginBottom: 20,
             }}>
-            {name}
+            {title}
           </Text>
         </View>
         <View style={S.imageLocation}>
@@ -68,7 +69,7 @@ const LocaitonDetail = ({
               marginBottom: 10,
               marginRight: 100,
             }}>
-            {location}
+            {address}
             {'    '}
             <Icon style={S.icon} name="star" size={20} color={'#fff'} />
             <Text

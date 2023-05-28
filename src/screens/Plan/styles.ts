@@ -21,14 +21,14 @@ export default StyleSheet.create({
   },
   eventDay: {
     fontSize: 40,
-    color: '#FF555F',
+    color: '#5A4CBB',
     fontFamily: FontFamily.bold,
     paddingTop: 35,
     alignSelf: 'flex-end',
   },
   eventMonth: {
     fontSize: 18,
-    color: '#FF555F',
+    color: '#5A4CBB',
     fontFamily: FontFamily.regular,
   },
   eventContent: {
@@ -70,7 +70,7 @@ export default StyleSheet.create({
     paddingTop: 20,
     paddingBottom: 0,
     fontSize: 40,
-    color: '#FF555F',
+    color: '#5A4CBB',
     fontFamily: FontFamily.bold,
     alignSelf: 'center',
   },

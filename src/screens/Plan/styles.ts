@@ -5,7 +5,7 @@ import { FontFamily } from '../../lib/options';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#AD7BE9',
+    backgroundColor: '#fff',
   },
   eventList: {
     marginTop: 5,
@@ -21,14 +21,14 @@ export default StyleSheet.create({
   },
   eventDay: {
     fontSize: 40,
-    color: '#FDE2F3',
+    color: '#FF555F',
     fontFamily: FontFamily.bold,
     paddingTop: 35,
     alignSelf: 'flex-end',
   },
   eventMonth: {
     fontSize: 18,
-    color: '#FDE2F3',
+    color: '#FF555F',
     fontFamily: FontFamily.regular,
   },
   eventContent: {
@@ -67,9 +67,10 @@ export default StyleSheet.create({
   },
   header: {
     marginTop: 30,
-    padding: 20,
+    paddingTop: 20,
+    paddingBottom: 0,
     fontSize: 40,
-    color: '#fff',
+    color: '#FF555F',
     fontFamily: FontFamily.bold,
     alignSelf: 'center',
   },

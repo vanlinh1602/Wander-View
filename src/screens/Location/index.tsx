@@ -1,4 +1,4 @@
-import { Image, ScrollView, Text, View } from 'native-base';
+import { ScrollView, Text, View } from 'native-base';
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -15,24 +15,9 @@ type Props = {
 
 const Location = ({ navigation }: Props) => {
   const locations = useSelector(selectLocations);
+
   return (
     <SafeAreaView>
-      <View style={styles.flex}>
-        <TouchableOpacity style={styles.welcomeView}>
-          <AntDesign name="left" color="purple" size={50} />
-        </TouchableOpacity>
-
-        <View style={styles.avaView}>
-          <Image
-            style={styles.avaImage}
-            source={{
-              uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiKUBafiNEc-HcMtgslV-6hCBtBrsBxYM5Bc75D_RB2FA45GvKzJi2py20b6BlwK3LadY&usqp=CAU',
-            }}
-            alt="Alternate Text"
-          />
-        </View>
-      </View>
-
       <View style={styles.locationBar}>
         <Text style={styles.locationName}>Ho Chi Minh</Text>
         <Text style={styles.pickLocation} fontSize={15} marginLeft={10}>
@@ -43,9 +28,7 @@ const Location = ({ navigation }: Props) => {
         </TouchableOpacity>
       </View>
 
-      <ScrollView
-        bgColor={'gray.100'}
-        contentContainerStyle={styles.paddingBottom}>
+      <ScrollView bgColor="white" contentContainerStyle={styles.paddingBottom}>
         <Categories />
 
         <ScrollView

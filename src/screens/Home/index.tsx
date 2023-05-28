@@ -1,11 +1,14 @@
-import { Image, ScrollView, Text, View } from 'native-base';
-import React from 'react';
+import { get } from 'lodash';
+import { Avatar, Image, ScrollView, Text, View } from 'native-base';
+import React, { useMemo } from 'react';
 import { TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
 
 import { Categories, LocationCard } from '../../components';
+import { avatars } from '../../lib/assets';
 import { selectLocations } from '../../redux/selectors/loaction';
+import { selectUser } from '../../redux/selectors/user';
 import FeaturedRow from './components/FeaturedRow';
 import styles from './styles';
 
@@ -15,13 +18,18 @@ type Props = {
 
 const Home = ({ navigation }: Props) => {
   const locations = useSelector(selectLocations);
+  const user = useSelector(selectUser);
+  const avatar = useMemo(() => {
+    return get(avatars, [user?.avatar!]) ?? avatars.avatar1;
+  }, [user]);
 
   return (
     <SafeAreaView>
       <View style={styles.flex} fontFamily="Roboto-Thin">
         <View style={styles.welcomeView}>
           <Text style={styles.helloLine}>
-            Hello <Text style={styles.orangeText}>Traveler!</Text>
+            Hello{' '}
+            <Text style={styles.orangeText}>{user?.name ?? 'Traveler!'}</Text>
           </Text>
           <Text style={styles.introLine}>
             Let's discover a new{' '}
@@ -30,13 +38,7 @@ const Home = ({ navigation }: Props) => {
         </View>
 
         <View style={styles.avaView}>
-          <Image
-            style={styles.avaImage}
-            source={{
-              uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiKUBafiNEc-HcMtgslV-6hCBtBrsBxYM5Bc75D_RB2FA45GvKzJi2py20b6BlwK3LadY&usqp=CAU',
-            }}
-            alt="Alternate Text"
-          />
+          <Avatar size={50} source={avatar} />
         </View>
       </View>
 
@@ -54,9 +56,7 @@ const Home = ({ navigation }: Props) => {
         />
       </View>
 
-      <ScrollView
-        bgColor={'gray.100'}
-        contentContainerStyle={styles.paddingBottom}>
+      <ScrollView bgColor="white" contentContainerStyle={styles.paddingBottom}>
         <Categories />
 
         <FeaturedRow title="Featured" description=" Something you may like" />

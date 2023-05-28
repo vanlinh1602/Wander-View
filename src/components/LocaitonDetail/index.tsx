@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   FlatList,
   ImageBackground,
@@ -11,6 +11,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { Fontisto } from '../../lib/icons';
 import type { Location } from '../../types/loaction';
+import PlanModal from '../PlanModal';
 import S from './styles';
 const Catalog = [
   { id: '1', icon: 'tent', title: 'Camping' },
@@ -31,12 +32,15 @@ type Props = {
 const LocaitonDetail = ({ route, navigation }: Props) => {
   const params: Location = (route as Route).params;
   const { imgUrl, title, rating, description, address } = params;
+  const [addPlan, setAddPlan] = useState<boolean>(false);
 
   const handlepress = () => {
     (navigation as Navigation).navigate('locationReview');
   };
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
+      {addPlan ? <PlanModal handleClose={() => setAddPlan(false)} /> : null}
       <ImageBackground style={{ flex: 0.45 }} source={{ uri: imgUrl }}>
         <View style={S.header}>
           <Icon
@@ -115,11 +119,11 @@ const LocaitonDetail = ({ route, navigation }: Props) => {
       </View>
 
       <View style={S.footer}>
-        <View style={S.bookNowBtn}>
+        <TouchableOpacity onPress={() => setAddPlan(true)} style={S.bookNowBtn}>
           <Text style={{ color: '#fff', fontSize: 16, fontWeight: 'bold' }}>
             Add plan
           </Text>
-        </View>
+        </TouchableOpacity>
         <TouchableOpacity onPress={handlepress}>
           <View style={S.bookNowBtn}>
             <Text style={{ color: '#fff', fontSize: 16, fontWeight: 'bold' }}>

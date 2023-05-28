@@ -1,22 +1,22 @@
 import { Input } from 'native-base';
-import React, { useState } from 'react';
+import React from 'react';
 import { Modal, Pressable, Text, View } from 'react-native';
 
 // import DatePicker from 'react-native-date-picker';
 import styles from './styles';
 
-const PlanModal = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+type Props = {
+  handleClose: () => void;
+};
+
+const PlanModal = ({ handleClose }: Props) => {
   // const [date, setDate] = useState(new Date());
   // const [open, setOpen] = useState(false);
   return (
     <Modal
       animationType="slide"
       transparent={true}
-      visible={modalVisible}
-      onRequestClose={() => {
-        setModalVisible(!modalVisible);
-      }}>
+      onRequestClose={handleClose}>
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
           <Text style={styles.textHeader}>Let's make a note!</Text>
@@ -69,9 +69,7 @@ const PlanModal = () => {
             marginBottom={5}
             height={210}
           />
-          <Pressable
-            style={styles.buttonClose}
-            onPress={() => setModalVisible(!modalVisible)}>
+          <Pressable style={styles.buttonClose} onPress={handleClose}>
             <Text style={styles.textButton}>Get Go!!!</Text>
           </Pressable>
         </View>

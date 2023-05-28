@@ -8,13 +8,12 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 
 import AuthorizedScreen from '../../AuthorizedScreen';
-import NewPostScreen from '../features/NewPostScreen';
 import { AntDesign } from '../lib/icons';
 import Account from '../screens/Account';
 import Home from '../screens/Home';
 import Location from '../screens/Location';
 import Plan from '../screens/Plan';
-// import Settings from '../screens/Settings';
+import Settings from '../screens/Settings';
 import { defautTabStyles, TabStyles } from './styles';
 const Tab = createBottomTabNavigator();
 
@@ -52,7 +51,8 @@ const Tabs = () => {
         tabBarStyle: {
           ...defautTabStyles.tabBarStyle,
         },
-      }}>
+      }}
+      sceneContainerStyle={{ paddingBottom: 100, backgroundColor: 'white' }}>
       <Tab.Screen
         name="location"
         component={Location}
@@ -96,7 +96,7 @@ const Tabs = () => {
       </Tab.Screen>
       <Tab.Screen
         name="setting"
-        component={NewPostScreen}
+        component={Settings}
         options={{
           tabBarIcon: ({ color, size }) => (
             <AntDesign name="setting" color={color} size={size} />

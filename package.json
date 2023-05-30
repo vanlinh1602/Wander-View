@@ -45,7 +45,8 @@
     "react-native-vector-icons": "^9.2.0",
     "react-redux": "^8.0.5",
     "redux": "^4.2.1",
-    "redux-saga": "^1.2.3"
+    "redux-saga": "^1.2.3",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
@@ -58,6 +59,7 @@
     "@types/react": "^18.0.24",
     "@types/react-native-vector-icons": "^6.4.13",
     "@types/react-test-renderer": "^18.0.0",
+    "@types/uuid": "^9.0.1",
     "babel-jest": "^29.2.1",
     "eslint": "^8.19.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",

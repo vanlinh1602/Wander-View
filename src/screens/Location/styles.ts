@@ -11,10 +11,7 @@ export default StyleSheet.create({
     paddingTop: 45,
   },
   paddingBottom: {
-    paddingBottom: 160,
-  },
-  padding: {
-    paddingHorizontal: 15,
+    paddingBottom: 50,
   },
   flex: {
     backgroundColor: 'white',
@@ -44,5 +41,29 @@ export default StyleSheet.create({
   },
   flexColumn: {
     flexDirection: 'column',
+    paddingHorizontal: 15,
+  },
+  searchBar: {
+    alignItems: 'center',
+    backgroundcolor: 'white',
+    flexDirection: 'row',
+    borderRadius: 20,
+    borderWidth: 1,
+    marginHorizontal: 20,
+    backgroundColor: 'white',
+    borderColor: 'purple',
+    elevation: 5,
+    marginVertical: 5,
+  },
+  imageInput: {
+    width: 40,
+    height: 40,
+    marginLeft: 10,
+  },
+  inputLocation: {
+    height: 50,
+    fontSize: 20,
+    marginLeft: 10,
+    color: 'black',
   },
 });

@@ -1,7 +1,6 @@
 import { get } from 'lodash';
-import { Avatar, Image, ScrollView, Text, View } from 'native-base';
+import { Avatar, ScrollView, Text, View } from 'native-base';
 import React, { useMemo } from 'react';
-import { TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
 
@@ -19,8 +18,9 @@ type Props = {
 const Home = ({ navigation }: Props) => {
   const locations = useSelector(selectLocations);
   const user = useSelector(selectUser);
+
   const avatar = useMemo(() => {
-    return get(avatars, [user?.avatar!]) ?? avatars.avatar1;
+    return get(avatars, user?.avatar ?? '', avatars.avatar1);
   }, [user]);
 
   return (
@@ -36,24 +36,9 @@ const Home = ({ navigation }: Props) => {
             <Text style={styles.purpleText}>adventure</Text>
           </Text>
         </View>
-
         <View style={styles.avaView}>
           <Avatar size={50} source={avatar} />
         </View>
-      </View>
-
-      <View style={styles.searchBar}>
-        <Image
-          source={{ uri: 'https://img.icons8.com/stickers/256/search.png' }}
-          style={styles.imageInput}
-          resizeMode="center"
-          alt="Alternate Text"
-        />
-        <TextInput
-          style={styles.inputLocation}
-          placeholder="Input Location"
-          placeholderTextColor={'gray'}
-        />
       </View>
 
       <ScrollView bgColor="white" contentContainerStyle={styles.paddingBottom}>

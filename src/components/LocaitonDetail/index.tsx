@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import {
   FlatList,
   ImageBackground,
@@ -10,19 +10,10 @@ import {
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { Fontisto } from '../../lib/icons';
+import { categories } from '../../lib/options';
 import type { Location } from '../../types/loaction';
 import PlanModal from '../PlanModal';
 import S from './styles';
-const Catalog = [
-  { id: '1', icon: 'tent', title: 'Camping' },
-  { id: '2', icon: 'island', title: 'Beach' },
-  {
-    id: '3',
-    icon: 'sait-boat',
-    title: 'Kayak          ',
-  },
-  { id: '4', icon: 'area-chart', title: 'Mountains' },
-];
 
 type Props = {
   route: any;
@@ -31,13 +22,15 @@ type Props = {
 
 const LocaitonDetail = ({ route, navigation }: Props) => {
   const params: Location = (route as Route).params;
-  const { imgUrl, title, rating, description, address } = params;
+  const { imgUrl, title, rating, description, address, catalogs } = params;
   const [addPlan, setAddPlan] = useState<boolean>(false);
-
   const handlepress = () => {
     (navigation as Navigation).navigate('locationReview');
   };
 
+  const catalogsData = useMemo(() => {
+    return categories.filter(category => catalogs.includes(category.title));
+  }, [catalogs]);
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
       {addPlan ? <PlanModal handleClose={() => setAddPlan(false)} /> : null}
@@ -103,16 +96,20 @@ const LocaitonDetail = ({ route, navigation }: Props) => {
         </Text>
         <View>
           <FlatList
-            data={Catalog}
-            renderItem={item => (
+            data={catalogsData}
+            renderItem={catalog => (
               <View style={S.container}>
                 <Text style={S.title}>
-                  <Fontisto name={item.item.icon} size={40} color={'#df96de'} />{' '}
-                  {item.item.title}
+                  <Fontisto
+                    name={catalog.item.icon}
+                    size={40}
+                    color={'#df96de'}
+                  />{' '}
+                  {catalog.item.title}
                 </Text>
               </View>
             )}
-            keyExtractor={item => item.id}
+            keyExtractor={item => item.icon}
             numColumns={2}
           />
         </View>

@@ -1,5 +1,12 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 
+export type Plan = {
+  name: string;
+  start: number;
+  end: number;
+  description?: string;
+};
+
 export type UserInfo = {
   uid?: string;
   email?: string;
@@ -7,6 +14,8 @@ export type UserInfo = {
   bithday?: number;
   phone?: string;
   avatar?: string;
+  plans?: Plan[];
+  save?: string[];
 };
 
 export type UserState = {

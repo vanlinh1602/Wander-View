@@ -49,28 +49,7 @@ export default StyleSheet.create({
     flex: 1,
     paddingVertical: 24,
   },
-  textInput: {
-    marginTop: 40,
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-  },
-  searchBar: {
-    alignItems: 'center',
-    backgroundcolor: 'white',
-    flexDirection: 'row',
-    borderRadius: 20,
-    borderWidth: 1,
-    marginHorizontal: 20,
-    backgroundColor: 'white',
-    borderColor: 'purple',
-    elevation: 5,
-    marginVertical: 5,
-  },
-  imageInput: {
-    width: 40,
-    height: 40,
-    marginLeft: 10,
-  },
+
   inputLocation: {
     height: 50,
     fontSize: 20,

@@ -5,11 +5,12 @@ export type Category = {
 };
 
 export type Location = {
+  id: string;
   imgUrl: string;
   title: string;
   rating?: string;
   description: string;
   genre?: string;
   address: string;
-  catalogs: ('Camping' | 'Beach' | 'Kayak' | 'Mount' | 'Forest')[];
+  catalogs: string[];
 };

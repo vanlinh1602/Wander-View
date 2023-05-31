@@ -8,11 +8,14 @@ import {
   View,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { useSelector } from 'react-redux';
 
 import { Fontisto } from '../../lib/icons';
 import { categories } from '../../lib/options';
+import { selectLoadingUser } from '../../redux/selectors/user';
 import type { Location } from '../../types/loaction';
 import PlanModal from '../PlanModal';
+import Waiting from '../Waiting';
 import S from './styles';
 
 type Props = {
@@ -24,6 +27,7 @@ const LocaitonDetail = ({ route, navigation }: Props) => {
   const params: Location = (route as Route).params;
   const { imgUrl, title, rating, description, address, catalogs } = params;
   const [addPlan, setAddPlan] = useState<boolean>(false);
+  const wating = useSelector(selectLoadingUser);
   const handlepress = () => {
     (navigation as Navigation).navigate('locationReview');
   };
@@ -33,7 +37,10 @@ const LocaitonDetail = ({ route, navigation }: Props) => {
   }, [catalogs]);
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
-      {addPlan ? <PlanModal handleClose={() => setAddPlan(false)} /> : null}
+      {wating ? <Waiting /> : null}
+      {addPlan ? (
+        <PlanModal location={params} handleClose={() => setAddPlan(false)} />
+      ) : null}
       <ImageBackground style={{ flex: 0.45 }} source={{ uri: imgUrl }}>
         <View style={S.header}>
           <Icon

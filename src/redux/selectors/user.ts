@@ -7,6 +7,11 @@ const selectDomain = (state: RootState) => state?.user || initialState;
 
 export const selectUser = createSelector([selectDomain], state => state.info);
 
+export const selectUserPlans = createSelector(
+  [selectDomain],
+  state => state.info?.plans,
+);
+
 export const selectLoadingUser = createSelector(
   [selectDomain],
   state => state.loading,

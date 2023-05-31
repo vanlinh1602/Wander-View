@@ -1,7 +1,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
-import type { SignInAction, UserInfo, UserState } from '../types/users';
+import type { Plan, SignInAction, UserInfo, UserState } from '../types/users';
 
 export const initialState: UserState = {
   info: {},
@@ -26,6 +26,12 @@ const userSlice = createSlice({
       };
     },
     updateUser(state, _action: PayloadAction<UserInfo>) {
+      state.loading = true;
+    },
+    savePlan(state, _action: PayloadAction<Plan>) {
+      state.loading = true;
+    },
+    removePlan(state, _action: PayloadAction<string>) {
       state.loading = true;
     },
   },

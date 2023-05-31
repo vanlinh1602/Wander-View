@@ -4,6 +4,7 @@ export type Plan = {
   name: string;
   start: number;
   end: number;
+  locationId: string;
   description?: string;
 };
 
@@ -14,7 +15,7 @@ export type UserInfo = {
   bithday?: number;
   phone?: string;
   avatar?: string;
-  plans?: Plan[];
+  plans?: CustomObject<Plan>;
   save?: string[];
 };
 

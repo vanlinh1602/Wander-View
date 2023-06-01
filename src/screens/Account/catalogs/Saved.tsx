@@ -18,6 +18,7 @@ const Saved = ({ navigation }: Props) => {
         const location = locations.find(value => value.id === postId);
         return (
           <Pressable
+            key={postId}
             onPress={() =>
               (navigation as Navigation).navigate('locationDetail', location)
             }>

@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { Waiting } from '../../components';
 import { avatars } from '../../lib/assets';
-import { Ionicons } from '../../lib/icons';
+import { AntDesign, Ionicons } from '../../lib/icons';
 import { backendService } from '../../services';
 import AddReview, { Review } from './AddReview';
 import styles from './styles';
@@ -65,14 +65,14 @@ const LocationReview = ({ navigation, route }: Props) => {
           onPress={() => (navigation as Navigation).goBack()}
           name="arrow-back-ios"
           size={23}
-          color={'##1a1818'}
+          color={'#1a1818'}
         />
 
         <Ionicons
           onPress={() => setAddReview(true)}
           name="create-outline"
           size={23}
-          color={'##1a1818'}
+          color={'#1a1818'}
         />
       </View>
       <View>
@@ -86,7 +86,8 @@ const LocationReview = ({ navigation, route }: Props) => {
               <Text style={styles.txtNameStyle}>{review.user?.name}</Text>
               <HStack>
                 {[1, 2, 3, 4, 5].map(star => (
-                  <Icon
+                  <AntDesign
+                    key={star}
                     name="star"
                     color={star <= review.rating ? 'orange' : 'lightgrey'}
                   />

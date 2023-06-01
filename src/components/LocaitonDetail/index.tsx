@@ -25,11 +25,11 @@ type Props = {
 
 const LocaitonDetail = ({ route, navigation }: Props) => {
   const params: Location = (route as Route).params;
-  const { imgUrl, title, rating, description, address, catalogs } = params;
+  const { imgUrl, title, rating, description, address, catalogs, id } = params;
   const [addPlan, setAddPlan] = useState<boolean>(false);
   const wating = useSelector(selectLoadingUser);
   const handlepress = () => {
-    (navigation as Navigation).navigate('locationReview');
+    (navigation as Navigation).navigate('locationReview', { postId: id });
   };
 
   const catalogsData = useMemo(() => {

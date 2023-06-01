@@ -8,11 +8,12 @@ import {
   View,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Fontisto } from '../../lib/icons';
 import { categories } from '../../lib/options';
-import { selectLoadingUser } from '../../redux/selectors/user';
+import { actions } from '../../redux/reducers/user';
+import { selectLoadingUser, selectUserSaves } from '../../redux/selectors/user';
 import type { Location } from '../../types/loaction';
 import PlanModal from '../PlanModal';
 import Waiting from '../Waiting';
@@ -28,13 +29,25 @@ const LocaitonDetail = ({ route, navigation }: Props) => {
   const { imgUrl, title, rating, description, address, catalogs, id } = params;
   const [addPlan, setAddPlan] = useState<boolean>(false);
   const wating = useSelector(selectLoadingUser);
-  const handlepress = () => {
-    (navigation as Navigation).navigate('locationReview', { postId: id });
-  };
+  const userSave = useSelector(selectUserSaves);
+  const dispatch = useDispatch();
+
+  const isSave = useMemo(() => {
+    return userSave?.includes(id);
+  }, [userSave, id]);
 
   const catalogsData = useMemo(() => {
     return categories.filter(category => catalogs.includes(category.title));
   }, [catalogs]);
+
+  const handleReview = () => {
+    (navigation as Navigation).navigate('locationReview', { postId: id });
+  };
+
+  const handleSave = () => {
+    dispatch(actions.updateUserSave(id));
+  };
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
       {wating ? <Waiting /> : null}
@@ -49,7 +62,12 @@ const LocaitonDetail = ({ route, navigation }: Props) => {
             size={28}
             color={'#fff'}
           />
-          <Icon name="favorite" size={28} color={'#eb34de'} />
+          <Icon
+            name="favorite"
+            size={28}
+            color={isSave ? '#eb34de' : 'grey'}
+            onPress={handleSave}
+          />
         </View>
         <View style={S.imageDetails}>
           <Text
@@ -128,7 +146,7 @@ const LocaitonDetail = ({ route, navigation }: Props) => {
             Add plan
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={handlepress}>
+        <TouchableOpacity onPress={handleReview}>
           <View style={S.bookNowBtn}>
             <Text style={{ color: '#fff', fontSize: 16, fontWeight: 'bold' }}>
               Review

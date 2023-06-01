@@ -51,7 +51,7 @@ function Account({ navigation }: Props) {
       case 'notifi':
         return <Notification />;
       case 'saved':
-        return <Saved />;
+        return <Saved navigation={navigation} />;
       default:
         return null;
     }

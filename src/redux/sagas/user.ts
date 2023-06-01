@@ -74,9 +74,42 @@ function* removePlan(action: PayloadAction<string>) {
   }
 }
 
+function* updateUserSave(action: PayloadAction<string>) {
+  const postId = action.payload;
+  const user: UserInfo = yield select(selectUser);
+
+  let dataUpdated;
+  if (user.save) {
+    if (user.save.includes(postId)) {
+      dataUpdated = user.save.filter(id => id !== postId);
+    } else {
+      dataUpdated = _.cloneDeep(user.save);
+      dataUpdated.push(postId);
+    }
+  } else {
+    dataUpdated = [postId];
+  }
+
+  const result: WithApiResult<string> = yield backendService.post(
+    'api/updateUserSave',
+    {
+      data: dataUpdated,
+      userId: user.uid,
+    },
+  );
+
+  if (result.kind === 'ok') {
+    yield put(
+      actions.fetchUser({
+        save: dataUpdated,
+      }),
+    );
+  }
+}
 export default function* usersSaga() {
   yield takeLatest(actions.signIn.type, signIn);
   yield takeLatest(actions.updateUser.type, updateUser);
   yield takeLatest(actions.savePlan.type, savePlan);
   yield takeLatest(actions.removePlan.type, removePlan);
+  yield takeLatest(actions.updateUserSave.type, updateUserSave);
 }

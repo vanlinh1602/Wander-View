@@ -17,6 +17,11 @@ export const selectUserPlans = createSelector(
   state => state.info?.plans,
 );
 
+export const selectUserSaves = createSelector(
+  [selectDomain],
+  state => state.info?.save,
+);
+
 export const selectLoadingUser = createSelector(
   [selectDomain],
   state => state.loading,

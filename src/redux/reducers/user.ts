@@ -34,6 +34,9 @@ const userSlice = createSlice({
     removePlan(state, _action: PayloadAction<string>) {
       state.loading = true;
     },
+    updateUserSave(state, _action: PayloadAction<string>) {
+      state.loading = true;
+    },
   },
 });
 

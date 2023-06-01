@@ -1,6 +1,6 @@
 import { get } from 'lodash';
 import { Avatar, ScrollView, Text, View } from 'native-base';
-import React, { useMemo } from 'react';
+import React, { useCallback } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
 
@@ -19,9 +19,10 @@ const Home = ({ navigation }: Props) => {
   const locations = useSelector(selectLocations);
   const user = useSelector(selectUser);
 
-  const avatar = useMemo(() => {
-    return get(avatars, user?.avatar ?? '', avatars.avatar1);
-  }, [user]);
+  const AvatarUser = useCallback(
+    () => <Avatar source={get(avatars, user?.avatar ?? '', avatars.avatar1)} />,
+    [user],
+  );
 
   return (
     <SafeAreaView>
@@ -37,7 +38,7 @@ const Home = ({ navigation }: Props) => {
           </Text>
         </View>
         <View style={styles.avaView}>
-          <Avatar size={50} source={avatar} />
+          <AvatarUser />
         </View>
       </View>
 

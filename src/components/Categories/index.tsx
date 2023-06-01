@@ -5,7 +5,11 @@ import { Image, Text, TouchableOpacity } from 'react-native';
 import { categories } from '../../lib/options';
 import S from './styles';
 
-const Categories = () => {
+type Props = {
+  navigation: any;
+};
+
+const Categories = ({ navigation }: Props) => {
   return (
     <ScrollView
       horizontal
@@ -13,7 +17,14 @@ const Categories = () => {
       contentContainerStyle={S.scrollView}>
       <View flexDirection={'row'}>
         {categories.map((category, index) => (
-          <TouchableOpacity key={index} style={S.touchableOpacity}>
+          <TouchableOpacity
+            key={index}
+            style={S.touchableOpacity}
+            onPress={() =>
+              (navigation as Navigation).navigate('location', {
+                category: category.title,
+              })
+            }>
             <View style={S.view}>
               <Image
                 source={{

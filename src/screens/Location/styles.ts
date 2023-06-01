@@ -1,15 +1,6 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  pickLocation: {
-    paddingTop: 20,
-  },
-  locationName: {
-    fontWeight: 'bold',
-    fontSize: 35,
-    color: 'black',
-    paddingTop: 45,
-  },
   paddingBottom: {
     paddingBottom: 50,
   },
@@ -32,13 +23,7 @@ export default StyleSheet.create({
     width: 75,
     borderRadius: 100,
   },
-  locationBar: {
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    flexDirection: 'row',
-    marginHorizontal: 20,
-    marginVertical: 5,
-  },
+
   flexColumn: {
     flexDirection: 'column',
     paddingHorizontal: 15,
@@ -59,11 +44,5 @@ export default StyleSheet.create({
     width: 40,
     height: 40,
     marginLeft: 10,
-  },
-  inputLocation: {
-    height: 50,
-    fontSize: 20,
-    marginLeft: 10,
-    color: 'black',
   },
 });

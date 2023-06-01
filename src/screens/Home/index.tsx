@@ -43,7 +43,7 @@ const Home = ({ navigation }: Props) => {
       </View>
 
       <ScrollView bgColor="white" contentContainerStyle={styles.paddingBottom}>
-        <Categories />
+        <Categories navigation={navigation} />
 
         <FeaturedRow title="Featured" description=" Something you may like" />
         <ScrollView

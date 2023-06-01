@@ -16,7 +16,7 @@ export default StyleSheet.create({
     color: 'gray',
   },
   paddingBottom: {
-    paddingBottom: 160,
+    paddingBottom: 70,
   },
   padding: {
     paddingHorizontal: 15,

@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 
 import { LocationCard } from '../../components';
 import { selectLocations } from '../../redux/selectors/loaction';
-import type { Location as LocationType } from '../../types/loaction';
+import type { Address, Location as LocationType } from '../../types/loaction';
 import ModalFilter from './ModalFilter';
 import styles from './styles';
 
@@ -17,7 +17,7 @@ type Props = {
 };
 
 export type Filter = {
-  address?: string;
+  address?: Address;
   category?: string;
 };
 
@@ -37,6 +37,24 @@ const Location = ({ navigation, route }: Props) => {
         dataFilter = dataFilter.filter(location =>
           location.catalogs.includes(options.category!),
         );
+      }
+      if (options.address) {
+        const { address } = options;
+        if (address.province) {
+          dataFilter = dataFilter.filter(
+            location => location.address.province === address.province,
+          );
+        }
+        if (address.district) {
+          dataFilter = dataFilter.filter(
+            location => location.address.district === address.district,
+          );
+        }
+        if (address.ward) {
+          dataFilter = dataFilter.filter(
+            location => location.address.ward === address.ward,
+          );
+        }
       }
       return dataFilter;
     },

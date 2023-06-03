@@ -41,7 +41,6 @@ const Home = ({ navigation }: Props) => {
           <AvatarUser />
         </View>
       </View>
-
       <ScrollView bgColor="white" contentContainerStyle={styles.paddingBottom}>
         <Categories navigation={navigation} />
 

@@ -4,6 +4,12 @@ export type Category = {
   icon: string;
 };
 
+export type Address = {
+  province: string;
+  district?: string;
+  ward?: string;
+};
+
 export type Location = {
   id: string;
   imgUrl: string;
@@ -11,6 +17,6 @@ export type Location = {
   rating?: string;
   description: string;
   genre?: string;
-  address: string;
+  address: Address;
   catalogs: string[];
 };

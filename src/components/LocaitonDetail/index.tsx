@@ -10,6 +10,7 @@ import {
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { GetAddressString } from '../../lib/common';
 import { Fontisto } from '../../lib/icons';
 import { categories } from '../../lib/options';
 import { actions } from '../../redux/reducers/user';
@@ -91,7 +92,7 @@ const LocaitonDetail = ({ route, navigation }: Props) => {
               marginBottom: 10,
               marginRight: 100,
             }}>
-            {address}
+            {GetAddressString(address, true)}
             {'    '}
             <Icon style={S.icon} name="star" size={20} color={'#fff'} />
             <Text

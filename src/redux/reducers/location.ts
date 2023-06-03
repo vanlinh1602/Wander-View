@@ -15,9 +15,14 @@ const locationSlice = createSlice({
     getLocations(state) {
       state.loading = true;
     },
-    fetchLocations(state, action: PayloadAction<Location[]>) {
-      state.data = action.payload;
+    fetchLocations(state, action: PayloadAction<Location[] | undefined>) {
+      if (action.payload) {
+        state.data = action.payload;
+      }
       state.loading = false;
+    },
+    addLocation(state, _action: PayloadAction<Location>) {
+      state.loading = true;
     },
   },
 });

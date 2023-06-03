@@ -2,6 +2,7 @@ import React from 'react';
 import { Image, Text, TouchableOpacity, View, ViewStyle } from 'react-native';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 
+import { GetAddressString } from '../../lib/common';
 import type { Location } from '../../types/loaction';
 import styles from './styles';
 
@@ -46,7 +47,7 @@ const LocationCard = ({
           <AntIcon name="enviroment" color="gray" size={20} />
           <Text style={styles.locationAddress}>
             {' '}
-            Nearby .{location.address}
+            Nearby .{GetAddressString(location.address, true)}
           </Text>
         </View>
       </View>

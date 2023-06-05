@@ -24,6 +24,10 @@ const Home = ({ navigation }: Props) => {
     [user],
   );
 
+  const handleMoveScreen = () => {
+    (navigation as Navigation).navigate('location');
+  };
+
   return (
     <SafeAreaView>
       <View style={styles.flex} fontFamily="Roboto-Thin">
@@ -44,7 +48,11 @@ const Home = ({ navigation }: Props) => {
       <ScrollView bgColor="white" contentContainerStyle={styles.paddingBottom}>
         <Categories navigation={navigation} />
 
-        <FeaturedRow title="Featured" description=" Something you may like" />
+        <FeaturedRow
+          moveScreen={handleMoveScreen}
+          title="Featured"
+          description=" Something you may like"
+        />
         <ScrollView
           horizontal
           contentContainerStyle={styles.padding}
@@ -61,7 +69,11 @@ const Home = ({ navigation }: Props) => {
           ))}
         </ScrollView>
 
-        <FeaturedRow title="Trend" description=" Locations that people love" />
+        <FeaturedRow
+          moveScreen={handleMoveScreen}
+          title="Trend"
+          description=" Locations that people love"
+        />
         <ScrollView
           horizontal
           contentContainerStyle={styles.padding}
@@ -78,7 +90,11 @@ const Home = ({ navigation }: Props) => {
           ))}
         </ScrollView>
 
-        <FeaturedRow title="Top visit" description=" Everyone best choice!" />
+        <FeaturedRow
+          moveScreen={handleMoveScreen}
+          title="Top visit"
+          description=" Everyone best choice!"
+        />
         <ScrollView
           horizontal
           contentContainerStyle={styles.padding}

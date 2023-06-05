@@ -21,6 +21,7 @@ export type UserInfo = {
 
 export type UserState = {
   info?: UserInfo;
+  admin: boolean;
   loading: boolean;
 };
 

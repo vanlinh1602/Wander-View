@@ -7,6 +7,11 @@ const selectDomain = (state: RootState) => state?.user || initialState;
 
 export const selectUser = createSelector([selectDomain], state => state.info);
 
+export const selectUserAdmin = createSelector(
+  [selectDomain],
+  state => state.admin,
+);
+
 export const selectUserID = createSelector(
   [selectDomain],
   state => state.info?.uid,

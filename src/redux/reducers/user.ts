@@ -5,6 +5,7 @@ import type { Plan, SignInAction, UserInfo, UserState } from '../types/users';
 
 export const initialState: UserState = {
   info: {},
+  admin: false,
   loading: false,
 };
 
@@ -16,6 +17,7 @@ const userSlice = createSlice({
       state.loading = true;
     },
     signOut(state) {
+      state.admin = false;
       state.info = {};
     },
     fetchUser(state, action: PayloadAction<UserInfo>) {
@@ -27,6 +29,9 @@ const userSlice = createSlice({
     },
     updateUser(state, _action: PayloadAction<UserInfo>) {
       state.loading = true;
+    },
+    fetchAdmin(state, action: PayloadAction<boolean>) {
+      state.admin = action.payload;
     },
     savePlan(state, _action: PayloadAction<Plan>) {
       state.loading = true;

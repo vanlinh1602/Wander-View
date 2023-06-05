@@ -1,7 +1,7 @@
 import moment from 'moment';
-import { Input } from 'native-base';
+import { Center, HStack, Input } from 'native-base';
 import React, { useState } from 'react';
-import { Modal, Pressable, Text, View } from 'react-native';
+import { Alert, Modal, Pressable, Text, View } from 'react-native';
 import DatePicker from 'react-native-date-picker';
 import { useDispatch } from 'react-redux';
 
@@ -25,7 +25,34 @@ const PlanModal = ({ handleClose, location }: Props) => {
   });
   const dispatch = useDispatch();
 
+  const validate = () => {
+    if (!plan.name) {
+      Alert.alert('Title', 'Title is require');
+      return false;
+    }
+    if (plan.name.length > 50) {
+      Alert.alert(
+        'Title',
+        'The title name of each plan should not be more than 50 characters long',
+      );
+      return false;
+    }
+    if (plan.description && plan.description.length > 800) {
+      Alert.alert(
+        'Description',
+        'The description of each plan should not be more than 50 characters long',
+      );
+      return false;
+    }
+    if (!plan.start || !plan.end) {
+      Alert.alert('Date', 'Date is require');
+      return false;
+    }
+    return true;
+  };
+
   const handleSubmit = () => {
+    if (!validate()) return;
     dispatch(actions.savePlan(plan));
     handleClose();
   };
@@ -112,9 +139,16 @@ const PlanModal = ({ handleClose, location }: Props) => {
                 setPlan(pre => ({ ...pre, description: value }))
               }
             />
-            <Pressable style={styles.buttonClose} onPress={handleSubmit}>
-              <Text style={styles.textButton}>Get Go!!!</Text>
-            </Pressable>
+            <Center>
+              <HStack space={5}>
+                <Pressable style={styles.buttonClose} onPress={handleClose}>
+                  <Text style={styles.textButton}>Cancel</Text>
+                </Pressable>
+                <Pressable style={styles.buttonClose} onPress={handleSubmit}>
+                  <Text style={styles.textButton}>Get Go!!!</Text>
+                </Pressable>
+              </HStack>
+            </Center>
           </View>
         </View>
       </Modal>

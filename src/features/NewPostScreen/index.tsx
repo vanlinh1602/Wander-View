@@ -9,6 +9,7 @@ import {
   VStack,
 } from 'native-base';
 import React, { useMemo, useState } from 'react';
+import { Alert } from 'react-native';
 import { SafeAreaView } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -59,7 +60,40 @@ const NewPostScreen = ({ navigation }: Props) => {
     return address.reverse().join(', ');
   }, [newPost.address]);
 
+  const validate = () => {
+    if (!newPost.imgUrl) {
+      Alert.alert('Image Url', 'This fields is require');
+      return false;
+    }
+    if (!newPost.title) {
+      Alert.alert('Title', 'This fields is require');
+      return false;
+    }
+    if (!newPost.description) {
+      Alert.alert('Description', 'This fields is require');
+      return false;
+    }
+    if (newPost.title.length > 50) {
+      Alert.alert('Title', 'Characters should not exceed 50');
+      return false;
+    }
+    if (newPost.description.length > 2200) {
+      Alert.alert('Description', 'Characters should not exceed 2200');
+      return false;
+    }
+    if (!newPost.catalogs) {
+      Alert.alert('Catalory', 'Please select category');
+      return false;
+    }
+    if (newPost.catalogs.length > 4) {
+      Alert.alert('Catalory', 'Max category is 4');
+      return false;
+    }
+    return true;
+  };
+
   const handleAddLocation = () => {
+    if (!validate()) return;
     dispatch(actions.addLocation(newPost));
   };
 

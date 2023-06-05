@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import { Button, FormControl, HStack, Input, Modal } from 'native-base';
 import React, { useState } from 'react';
+import { Alert } from 'react-native';
 import { useSelector } from 'react-redux';
 
 import { AntDesign } from '../../lib/icons';
@@ -31,7 +32,16 @@ const AddReview = ({ handleClose, postId, setLoading, handleAdded }: Props) => {
     comment: '',
   });
 
+  const validate = () => {
+    if (userReview.comment && userReview.comment.length > 1200) {
+      Alert.alert('Comment', 'Characters should not exceed 1200');
+      return false;
+    }
+    return true;
+  };
+
   const handleAddReview = async () => {
+    if (!validate()) return;
     setLoading(true);
     const dataUpload = _.cloneDeep(userReview);
     dataUpload.user = {

@@ -8,6 +8,7 @@ import {
   View,
 } from 'native-base';
 import React, { useState } from 'react';
+import { Alert } from 'react-native';
 import DatePicker from 'react-native-date-picker';
 import { useDispatch } from 'react-redux';
 
@@ -25,6 +26,24 @@ const Infomation = ({ userInfo }: Props) => {
   const [selectDate, setSelectDate] = useState<boolean>(false);
   const [user, setUser] = useState<UserInfo>(userInfo);
   const dispatch = useDispatch();
+
+  const validate = () => {
+    if (!user.name) {
+      Alert.alert('Name', 'Name cannot be left blank');
+      return false;
+    }
+    if (user.phone && !/^[0-9]+$/.test(user.phone)) {
+      Alert.alert('Phone number', 'Please input number');
+      return false;
+    }
+    return true;
+  };
+
+  const handleEdiUserInfo = () => {
+    if (!validate()) return;
+    dispatch(actions.updateUser(user));
+    setEdit(false);
+  };
 
   return (
     <View width="full">
@@ -49,6 +68,7 @@ const Infomation = ({ userInfo }: Props) => {
       <FormControl isReadOnly={!edit}>
         <FormControl.Label>Email</FormControl.Label>
         <Input
+          isReadOnly
           value={user.email}
           onChangeText={value => setUser(pre => ({ ...pre, email: value }))}
         />
@@ -83,10 +103,7 @@ const Infomation = ({ userInfo }: Props) => {
           <Button
             backgroundColor="green.500"
             style={S.btnEdit}
-            onPress={() => {
-              dispatch(actions.updateUser(user));
-              setEdit(false);
-            }}>
+            onPress={handleEdiUserInfo}>
             <Feather name="check" size={20} color="white" />
           </Button>
         ) : null}

@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import {
+  Alert,
   FlatList,
   ImageBackground,
   SafeAreaView,
@@ -14,7 +15,11 @@ import { GetAddressString } from '../../lib/common';
 import { Fontisto } from '../../lib/icons';
 import { categories } from '../../lib/options';
 import { actions } from '../../redux/reducers/user';
-import { selectLoadingUser, selectUserSaves } from '../../redux/selectors/user';
+import {
+  selectLoadingUser,
+  selectUserID,
+  selectUserSaves,
+} from '../../redux/selectors/user';
 import type { Location } from '../../types/loaction';
 import PlanModal from '../PlanModal';
 import Waiting from '../Waiting';
@@ -32,6 +37,7 @@ const LocaitonDetail = ({ route, navigation }: Props) => {
   const wating = useSelector(selectLoadingUser);
   const userSave = useSelector(selectUserSaves);
   const dispatch = useDispatch();
+  const userId = useSelector(selectUserID);
 
   const isSave = useMemo(() => {
     return userSave?.includes(id);
@@ -46,6 +52,10 @@ const LocaitonDetail = ({ route, navigation }: Props) => {
   };
 
   const handleSave = () => {
+    if (!userId) {
+      Alert.alert('Wander View', 'Please login to use this feature');
+      return;
+    }
     dispatch(actions.updateUserSave(id));
   };
 
@@ -142,7 +152,15 @@ const LocaitonDetail = ({ route, navigation }: Props) => {
       </View>
 
       <View style={S.footer}>
-        <TouchableOpacity onPress={() => setAddPlan(true)} style={S.bookNowBtn}>
+        <TouchableOpacity
+          onPress={() => {
+            if (!userId) {
+              Alert.alert('Wander View', 'Please login to use this feature');
+              return;
+            }
+            setAddPlan(true);
+          }}
+          style={S.bookNowBtn}>
           <Text style={{ color: '#fff', fontSize: 16, fontWeight: 'bold' }}>
             Add plan
           </Text>

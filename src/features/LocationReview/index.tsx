@@ -1,12 +1,14 @@
 import _ from 'lodash';
 import { Avatar, HStack } from 'native-base';
 import React, { useEffect, useState } from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { Alert, ScrollView, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { useSelector } from 'react-redux';
 
 import { Waiting } from '../../components';
 import { avatars } from '../../lib/assets';
 import { AntDesign, Ionicons } from '../../lib/icons';
+import { selectUserID } from '../../redux/selectors/user';
 import { backendService } from '../../services';
 import AddReview, { Review } from './AddReview';
 import styles from './styles';
@@ -20,6 +22,7 @@ type CustomReview = Review & { id: string };
 
 const LocationReview = ({ navigation, route }: Props) => {
   const { postId } = (route as Route).params;
+  const userId = useSelector(selectUserID);
   const [addReview, setAddReview] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [reviews, setReviews] = useState<CustomReview[]>([]);
@@ -69,7 +72,13 @@ const LocationReview = ({ navigation, route }: Props) => {
         />
 
         <Ionicons
-          onPress={() => setAddReview(true)}
+          onPress={() => {
+            if (!userId) {
+              Alert.alert('Wander View', 'Please login to use this feature');
+              return;
+            }
+            setAddReview(true);
+          }}
           name="create-outline"
           size={23}
           color={'#1a1818'}

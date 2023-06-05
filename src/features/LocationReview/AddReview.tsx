@@ -2,9 +2,10 @@ import _ from 'lodash';
 import { Button, FormControl, HStack, Input, Modal } from 'native-base';
 import React, { useState } from 'react';
 import { Alert } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { AntDesign } from '../../lib/icons';
+import { actions } from '../../redux/reducers/location';
 import { selectUser } from '../../redux/selectors/user';
 import { backendService } from '../../services';
 
@@ -31,6 +32,7 @@ const AddReview = ({ handleClose, postId, setLoading, handleAdded }: Props) => {
     rating: 5,
     comment: '',
   });
+  const dispatch = useDispatch();
 
   const validate = () => {
     if (userReview.comment && userReview.comment.length > 1200) {
@@ -49,15 +51,21 @@ const AddReview = ({ handleClose, postId, setLoading, handleAdded }: Props) => {
       id: user?.uid ?? '',
       avatar: user?.avatar ?? 'avatar1',
     };
-    const result = await backendService.post<string>('api/addReview', {
+    const result = await backendService.post<{
+      cmtId: string;
+      postRating: string;
+    }>('api/addReview', {
       data: dataUpload,
       postId,
     });
 
     if (result.kind === 'ok') {
       setLoading(false);
+      dispatch(
+        actions.fetchLocationRate({ rating: result.data.postRating, postId }),
+      );
       handleAdded({
-        id: result.data,
+        id: result.data.cmtId,
         ...dataUpload,
       });
     }

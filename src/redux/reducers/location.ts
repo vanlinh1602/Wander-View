@@ -21,6 +21,19 @@ const locationSlice = createSlice({
       }
       state.loading = false;
     },
+    fetchLocationRate(
+      state,
+      action: PayloadAction<{ rating: string; postId: string }>,
+    ) {
+      const { rating, postId } = action.payload;
+      const filter = state.data.filter(loaction => loaction.id !== postId);
+      const loaction = state.data.find(({ id }) => id === postId);
+      if (loaction) {
+        loaction.rating = rating;
+        filter.push(loaction);
+        state.data = filter;
+      }
+    },
     addLocation(state, _action: PayloadAction<Location>) {
       state.loading = true;
     },

@@ -10,6 +10,8 @@ declare global {
     push: (screen: string) => void;
     goBack: () => void;
     navigate: (screen: string, params?: any) => void;
+    reset: (props: { index: number; routes: { name: string }[] }) => void;
+    replace: (name: string, params: { screen: string }) => void;
   };
 
   type Route = {

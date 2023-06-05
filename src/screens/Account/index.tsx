@@ -17,7 +17,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { SelectAvatar, Waiting } from '../../components';
 import { avatars } from '../../lib/assets';
 import { Feather, MaterialIcons } from '../../lib/icons';
-import { defautTabStyles } from '../../navigation/styles';
 import { actions } from '../../redux/reducers/user';
 import { selectLoadingUser, selectUser } from '../../redux/selectors/user';
 import Infomation from './catalogs/Infomation';
@@ -35,10 +34,10 @@ function Account({ navigation }: Props) {
   const [active, setActive] = useState<string>('infomation');
   const [selectAvatar, setSelectAvatar] = useState<boolean>();
   useEffect(() => {
-    navigation?.setOptions({
-      tabBarStyle: { ...defautTabStyles.tabBarStyle },
-    });
-  }, [navigation]);
+    if (!user?.uid) {
+      (navigation as Navigation).replace('auth', { screen: 'account' });
+    }
+  }, [navigation, user]);
 
   const avatar = useMemo(() => {
     return _.get(avatars, [user?.avatar!]) ?? avatars.avatar1;

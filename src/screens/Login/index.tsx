@@ -22,28 +22,38 @@ import {
   Ionicons,
   MaterialIcons,
 } from '../../lib/icons';
-import { selectLoadingUser } from '../../redux/selectors/user';
+import { selectLoadingUser, selectUserID } from '../../redux/selectors/user';
 import type { LoginInfo } from '../../types/login';
 import S from './styles';
 
 type Props = {
   navigation?: any;
+  route: any;
 };
 
-function Login({ navigation }: Props) {
-  useEffect(() => {
-    navigation?.setOptions({ tabBarStyle: { display: 'none' } });
-  }, [navigation]);
+function Login({ navigation, route }: Props) {
   const [show, setShow] = useState(false);
+  const userId = useSelector(selectUserID);
   const [showModalSign, setShowModalSign] = useState(false);
   const [loginInfo, setLoginInfo] = useState<LoginInfo>({});
   const [waiting, setWaiting] = useState<boolean>(false);
   const loadUser = useSelector(selectLoadingUser);
 
+  useEffect(() => {
+    if (userId) {
+      const { screen } = (route as Route).params;
+      (navigation as Navigation).navigate('Main', screen);
+    }
+  }, [userId, navigation, route]);
+
   const loginWithEmail = async () => {
     setWaiting(true);
     await auth()
       .signInWithEmailAndPassword(loginInfo.email ?? '', loginInfo.pass ?? '')
+      .then(() => {
+        const { screen } = (route as Route).params;
+        (navigation as Navigation).navigate('Main', screen);
+      })
       .catch(error => {
         setWaiting(false);
         console.error(error);
@@ -58,6 +68,20 @@ function Login({ navigation }: Props) {
           onWait={value => setWaiting(value)}
         />
       ) : null}
+      <Pressable
+        style={{
+          position: 'relative',
+          top: 10,
+          left: 10,
+          width: 30,
+          height: 30,
+        }}
+        onPress={() => {
+          (navigation as Navigation).navigate('Main');
+        }}>
+        <AntDesign name="left" size={30} />
+      </Pressable>
+
       <Center style={S.center}>
         <Heading fontSize="5xl" style={S.title}>
           Sign In

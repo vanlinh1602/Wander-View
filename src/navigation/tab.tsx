@@ -4,10 +4,9 @@ import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
 import { View } from 'native-base';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { TouchableOpacity } from 'react-native';
 
-import AuthorizedScreen from '../../AuthorizedScreen';
 import { AntDesign } from '../lib/icons';
 import Account from '../screens/Account';
 import Home from '../screens/Home';
@@ -40,10 +39,21 @@ const CustomTabBarButton = ({ children, onPress }: BottomTabBarButtonProps) => {
   );
 };
 
-const Tabs = () => {
+type Props = {
+  navigation: any;
+  route: any;
+};
+
+const Tabs = ({ route }: Props) => {
+  const initScreen = useMemo(() => {
+    if ((route as Route).params) {
+      return route.params;
+    }
+    return 'home';
+  }, [route]);
   return (
     <Tab.Navigator
-      initialRouteName="home"
+      initialRouteName={initScreen}
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
@@ -87,13 +97,9 @@ const Tabs = () => {
           tabBarIcon: ({ color, size }) => (
             <AntDesign name="user" color={color} size={size} />
           ),
-        }}>
-        {({ navigation }) => (
-          <AuthorizedScreen navigation={navigation}>
-            <Account navigation={navigation} />
-          </AuthorizedScreen>
-        )}
-      </Tab.Screen>
+        }}
+        component={Account}
+      />
       <Tab.Screen
         name="setting"
         component={Settings}

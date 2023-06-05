@@ -1,6 +1,7 @@
 import auth from '@react-native-firebase/auth';
 import { Button, FormControl, Input, Modal, Pressable } from 'native-base';
 import React, { useState } from 'react';
+import { Alert } from 'react-native';
 
 import { MaterialIcons } from '../../lib/icons';
 import type { LoginInfo } from '../../types/login';
@@ -15,9 +16,28 @@ const SignUp = ({ onClose, onWait }: Props) => {
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
   const [show, setShow] = useState(false);
-  const [loginInfo, setLoginInfo] = useState<LoginInfo>({});
+  const [loginInfo, setLoginInfo] = useState<LoginInfo & { rePass?: string }>(
+    {},
+  );
+
+  const validate = (): boolean => {
+    if (!loginInfo.email) {
+      Alert.alert('Sign Up', 'Please input email');
+      return false;
+    }
+    if (!loginInfo.pass) {
+      Alert.alert('Sign Up', 'Please input pass');
+      return false;
+    }
+    if (loginInfo.pass !== loginInfo.rePass) {
+      Alert.alert('Sign Up', 'Please check validate pass');
+      return false;
+    }
+    return true;
+  };
 
   const handleSignUp = async () => {
+    if (!validate()) return;
     onWait(true);
     onClose();
     auth()
@@ -68,6 +88,15 @@ const SignUp = ({ onClose, onWait }: Props) => {
               }
               onChangeText={value =>
                 setLoginInfo(pre => ({ ...pre, pass: value }))
+              }
+            />
+          </FormControl>
+          <FormControl mt="3">
+            <FormControl.Label>Confirm Password</FormControl.Label>
+            <Input
+              type={show ? 'text' : 'password'}
+              onChangeText={value =>
+                setLoginInfo(pre => ({ ...pre, rePass: value }))
               }
             />
           </FormControl>

@@ -11,7 +11,7 @@ import {
   Text,
 } from 'native-base';
 import React, { useEffect, useState } from 'react';
-import { ImageBackground } from 'react-native';
+import { Alert, ImageBackground } from 'react-native';
 import { useSelector } from 'react-redux';
 
 import { SignUp, Waiting } from '../../components';
@@ -24,6 +24,7 @@ import {
 } from '../../lib/icons';
 import { selectLoadingUser, selectUserID } from '../../redux/selectors/user';
 import type { LoginInfo } from '../../types/login';
+import FogotPass from './FogotPass';
 import S from './styles';
 
 type Props = {
@@ -35,6 +36,7 @@ function Login({ navigation, route }: Props) {
   const [show, setShow] = useState(false);
   const userId = useSelector(selectUserID);
   const [showModalSign, setShowModalSign] = useState(false);
+  const [showModalFogot, setShowModalFogot] = useState(false);
   const [loginInfo, setLoginInfo] = useState<LoginInfo>({});
   const [waiting, setWaiting] = useState<boolean>(false);
   const loadUser = useSelector(selectLoadingUser);
@@ -46,7 +48,20 @@ function Login({ navigation, route }: Props) {
     }
   }, [userId, navigation, route]);
 
+  const validate = (): boolean => {
+    if (!loginInfo.email) {
+      Alert.alert('Login', 'Please input email');
+      return false;
+    }
+    if (!loginInfo.pass) {
+      Alert.alert('Login', 'Please input pass');
+      return false;
+    }
+    return true;
+  };
+
   const loginWithEmail = async () => {
+    if (!validate()) return;
     setWaiting(true);
     await auth()
       .signInWithEmailAndPassword(loginInfo.email ?? '', loginInfo.pass ?? '')
@@ -56,7 +71,7 @@ function Login({ navigation, route }: Props) {
       })
       .catch(error => {
         setWaiting(false);
-        console.error(error);
+        Alert.alert('Login', error.message);
       });
   };
   return (
@@ -67,6 +82,9 @@ function Login({ navigation, route }: Props) {
           onClose={() => setShowModalSign(false)}
           onWait={value => setWaiting(value)}
         />
+      ) : null}
+      {showModalFogot ? (
+        <FogotPass onClose={() => setShowModalFogot(false)} />
       ) : null}
       <Pressable
         style={{
@@ -132,14 +150,20 @@ function Login({ navigation, route }: Props) {
             style={S.button}>
             <Text style={S.textBtn}>Sign In</Text>
           </Button>
-          <Button
-            colorScheme="secondary"
-            variant="ghost"
-            onPress={() => setShowModalSign(true)}>
-            <Text fontSize={16} color="secondary.700">
+          <HStack space={5}>
+            <Button
+              variant="subtle"
+              borderRadius={24}
+              onPress={() => setShowModalSign(true)}>
               Or Sign Up
-            </Text>
-          </Button>
+            </Button>
+            <Button
+              variant="subtle"
+              borderRadius={24}
+              onPress={() => setShowModalFogot(true)}>
+              Fogot Password
+            </Button>
+          </HStack>
         </Stack>
         <Heading fontSize="2xl" style={S.title}>
           Login With

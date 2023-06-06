@@ -39,7 +39,7 @@ const LocationCard = ({
           <AntIcon name="star" color="green" size={20} />
           <Text style={styles.locationRating}>
             <Text style={styles.greenText}>{location.rating}</Text> .{' '}
-            {location.genre}
+            {location.genre ?? 'Disttrict'}
           </Text>
         </View>
 

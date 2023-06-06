@@ -6,6 +6,7 @@ import LocationReview from '../features/LocationReview';
 import NewPostScreen from '../features/NewPostScreen';
 import Login from '../screens/Login';
 import AboutUs from '../screens/Settings/AboutUs';
+import Contact from '../screens/Settings/Contact';
 import Tabs from './tab';
 
 const Stack = createStackNavigator();
@@ -22,6 +23,7 @@ const StackNavigate = () => {
       <Stack.Screen name="newPost" component={NewPostScreen} />
       <Stack.Screen name="auth" component={Login} />
       <Stack.Screen name="aboutUs" component={AboutUs} />
+      <Stack.Screen name="contact" component={Contact} />
     </Stack.Navigator>
   );
 };

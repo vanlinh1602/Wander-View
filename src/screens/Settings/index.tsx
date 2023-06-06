@@ -59,7 +59,7 @@ const Settings = ({ navigation }: Props) => {
             justifyContent: 'space-between',
             flexDirection: 'row',
           }}
-          onPress={() => console.log('Pressed')}>
+          onPress={() => (navigation as Navigation).navigate('contact')}>
           <Text color="white" width="64">
             Contact
           </Text>

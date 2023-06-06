@@ -27,3 +27,10 @@ export const locations = {
   location1: require('../assets/images/locations/location1.jpg'),
   location3: require('../assets/images/locations/location3.jpg'),
 };
+
+export const owners = {
+  owner1: require('../assets/images/owners/Silver_Wolf_001.png'),
+  owner2: require('../assets/images/owners/Silver_Wolf_002.png'),
+  owner3: require('../assets/images/owners/Silver_Wolf_003.png'),
+  owner4: require('../assets/images/owners/Silver_Wolf_004.png'),
+};

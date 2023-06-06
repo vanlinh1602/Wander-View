@@ -1,6 +1,6 @@
 import { get } from 'lodash';
 import { Avatar, ScrollView, Text, View } from 'native-base';
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
 
@@ -20,7 +20,13 @@ const Home = ({ navigation }: Props) => {
   const user = useSelector(selectUser);
 
   const AvatarUser = useCallback(
-    () => <Avatar source={get(avatars, user?.avatar ?? '', avatars.avatar1)} />,
+    () => (
+      <Avatar
+        source={get(avatars, user?.avatar ?? '', avatars.avatar1)}
+        borderColor="#5646b7"
+        borderWidth="1"
+      />
+    ),
     [user],
   );
 

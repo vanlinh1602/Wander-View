@@ -11,7 +11,7 @@ import {
   Text,
   VStack,
 } from 'native-base';
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { SelectAvatar, Waiting } from '../../components';
@@ -82,7 +82,13 @@ function Account({ navigation }: Props) {
           />
         )}
       </Pressable>
-      <Avatar key={avatar} size="2xl" source={avatar} mt="2">
+      <Avatar
+        key={avatar}
+        size="2xl"
+        source={avatar}
+        mt="2"
+        borderColor="#5646b7"
+        borderWidth="1.5">
         <Avatar.Badge
           style={S.photo}
           children={

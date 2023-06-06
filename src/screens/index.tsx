@@ -35,7 +35,8 @@ function Workspace() {
           }
         });
     }
-  }, [user, dispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user?.uid, dispatch]);
 
   useEffect(() => {
     dispatch(locationActions.getLocations());

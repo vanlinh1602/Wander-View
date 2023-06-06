@@ -1,5 +1,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 
+import type { Notify } from '../../types/utils';
+
 export type Plan = {
   name: string;
   start: number;
@@ -17,6 +19,7 @@ export type UserInfo = {
   avatar?: string;
   plans?: CustomObject<Plan>;
   save?: string[];
+  notification?: CustomObject<Notify>;
 };
 
 export type UserState = {

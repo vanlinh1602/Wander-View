@@ -1,8 +1,38 @@
-import { Text } from 'native-base';
+import moment from 'moment';
+import { Pressable, Text, VStack } from 'native-base';
 import React from 'react';
+import { useSelector } from 'react-redux';
+
+import { selectUserNotification } from '../../../redux/selectors/user';
 
 const Notification = () => {
-  return <Text>Thông báo nè</Text>;
+  const userNotification = useSelector(selectUserNotification);
+  console.log(userNotification);
+
+  return (
+    <VStack space={2}>
+      {Object.values(userNotification ?? {})
+        .sort((a, b) => b.time! - a.time!)
+        .map(notify => {
+          return (
+            <Pressable
+              key={notify.id}
+              width="80"
+              style={{
+                borderWidth: 1,
+                padding: 10,
+                borderRadius: 24,
+                borderColor: '#5A4CBB',
+              }}>
+              <Text style={{ fontWeight: 'bold' }}>
+                {notify.title} - {moment(notify.time).format('D/M/Y')}
+              </Text>
+              <Text>Nội dung: {notify.body}</Text>
+            </Pressable>
+          );
+        })}
+    </VStack>
+  );
 };
 
 export default Notification;

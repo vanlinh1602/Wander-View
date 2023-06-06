@@ -3,6 +3,8 @@ import _ from 'lodash';
 import { put, select, takeLatest } from 'redux-saga/effects';
 
 import { backendService } from '../../services';
+import { createNotification } from '../../services/notify';
+import type { Notify } from '../../types/utils';
 import { actions } from '../reducers/user';
 import { selectUser } from '../selectors/user';
 import type { Plan, SignInAction, UserInfo } from '../types/users';
@@ -41,8 +43,30 @@ function* savePlan(action: PayloadAction<Plan>) {
     { userId: user.uid, plan },
   );
   if (result.kind === 'ok') {
+    const notifyId: string = yield createNotification(
+      'Vacation coming',
+      plan.name,
+      plan.start,
+    );
+
+    const data: Notify = {
+      id: notifyId,
+      title: 'Vacation coming',
+      body: plan.name,
+      time: plan.start,
+    };
+
+    yield backendService.post('api/updateNotify', {
+      userId: user.uid,
+      data,
+    });
+
     yield put(
       actions.fetchUser({
+        notification: {
+          ...user.notification,
+          [data.id]: data,
+        },
         plans: {
           ...user.plans,
           [result.data]: plan,

@@ -44,7 +44,7 @@ const Settings = ({ navigation }: Props) => {
             justifyContent: 'space-between',
             flexDirection: 'row',
           }}
-          onPress={() => console.log('Pressed')}>
+          onPress={() => (navigation as Navigation).navigate('aboutUs')}>
           <Text color="white" width="64">
             About Us
           </Text>

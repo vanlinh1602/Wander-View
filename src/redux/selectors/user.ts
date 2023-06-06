@@ -27,6 +27,11 @@ export const selectUserSaves = createSelector(
   state => state.info?.save,
 );
 
+export const selectUserNotification = createSelector(
+  [selectDomain],
+  state => state.info?.notification,
+);
+
 export const selectLoadingUser = createSelector(
   [selectDomain],
   state => state.loading,

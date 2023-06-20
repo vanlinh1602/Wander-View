@@ -14,3 +14,8 @@ export const selectLoadingLocations = createSelector(
   [selectDomain],
   state => state.loading,
 );
+
+export const selectLocationsWeather = createSelector(
+  [selectDomain],
+  state => state.weather,
+);

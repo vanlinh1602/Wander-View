@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import type { Location } from '../../types/loaction';
+import type { WeatherResult } from '../../types/weather';
 import type { LocationState } from '../types/location';
 
 export const initialState: LocationState = {
@@ -36,6 +37,26 @@ const locationSlice = createSlice({
     },
     addLocation(state, _action: PayloadAction<Location>) {
       state.loading = true;
+    },
+    getWeatherResult(
+      state,
+      _action: PayloadAction<{ id: string; location: string }>,
+    ) {
+      state.loading = true;
+    },
+
+    fetchWeatherResult(
+      state,
+      action: PayloadAction<{ id: string; result: WeatherResult }>,
+    ) {
+      state.loading = false;
+      if (action.payload) {
+        const { id, result } = action.payload;
+        state.weather = {
+          ...state.weather,
+          [id]: result,
+        };
+      }
     },
   },
 });

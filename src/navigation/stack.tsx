@@ -4,6 +4,7 @@ import React from 'react';
 import { LocaitonDetail } from '../components';
 import LocationReview from '../features/LocationReview';
 import NewPostScreen from '../features/NewPostScreen';
+import { Weather } from '../features/Weather';
 import Login from '../screens/Login';
 import AboutUs from '../screens/Settings/AboutUs';
 import Contact from '../screens/Settings/Contact';
@@ -24,6 +25,7 @@ const StackNavigate = () => {
       <Stack.Screen name="auth" component={Login} />
       <Stack.Screen name="aboutUs" component={AboutUs} />
       <Stack.Screen name="contact" component={Contact} />
+      <Stack.Screen name="weather" component={Weather} />
     </Stack.Navigator>
   );
 };

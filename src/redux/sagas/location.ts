@@ -4,6 +4,8 @@ import { put, select, takeLatest } from 'redux-saga/effects';
 
 import { backendService } from '../../services';
 import type { Location } from '../../types/loaction';
+import type { WeatherResult } from '../../types/weather';
+import { removeAccents } from '../../utils/string';
 import { actions } from '../reducers/location';
 import { selectLocations } from '../selectors/loaction';
 
@@ -38,7 +40,23 @@ function* addLocation(action: PayloadAction<Location>) {
   }
 }
 
+function* getWeatherResult(
+  action: PayloadAction<{ id: string; location: string }>,
+) {
+  const { id, location } = action.payload;
+  const result: WithApiResult<WeatherResult> = yield backendService.post(
+    'api/getWeather',
+    {
+      location: removeAccents(location),
+    },
+  );
+  if (result.kind === 'ok') {
+    yield put(actions.fetchWeatherResult({ id, result: result.data }));
+  }
+}
+
 export default function* locationSaga() {
   yield takeLatest(actions.getLocations.type, getLocations);
   yield takeLatest(actions.addLocation.type, addLocation);
+  yield takeLatest(actions.getWeatherResult.type, getWeatherResult);
 }

@@ -66,7 +66,6 @@ export default class Api {
     params?: any,
   ): Promise<{ kind: 'ok'; data: T } | ApiProblems> => {
     const response: ApiResponse<any> = await this.api.post(path, params);
-
     if (response.ok) {
       return { kind: 'ok', data: response.data };
     }

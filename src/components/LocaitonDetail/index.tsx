@@ -1,3 +1,4 @@
+import { VStack } from 'native-base';
 import React, { useMemo, useState } from 'react';
 import {
   Alert,
@@ -12,7 +13,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { GetAddressString } from '../../lib/common';
-import { Fontisto } from '../../lib/icons';
+import { Fontisto, MaterialCommunityIcons } from '../../lib/icons';
 import { categories } from '../../lib/options';
 import { actions } from '../../redux/reducers/user';
 import {
@@ -73,12 +74,24 @@ const LocaitonDetail = ({ route, navigation }: Props) => {
             size={28}
             color={'#fff'}
           />
-          <Icon
-            name="favorite"
-            size={28}
-            color={isSave ? '#eb34de' : 'grey'}
-            onPress={handleSave}
-          />
+          <VStack space={5}>
+            <Icon
+              name="favorite"
+              size={28}
+              color={isSave ? '#eb34de' : 'grey'}
+              onPress={handleSave}
+            />
+            <MaterialCommunityIcons
+              name="sun-thermometer"
+              size={28}
+              color="orange"
+              onPress={() =>
+                (navigation as Navigation).navigate('weather', {
+                  location: params,
+                })
+              }
+            />
+          </VStack>
         </View>
         <View style={S.imageDetails}>
           <Text

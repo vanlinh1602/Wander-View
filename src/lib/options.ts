@@ -48,3 +48,42 @@ export const dataCitySelectList = [
   { key: 'C4', value: 'Vung Tau' },
   { key: 'C5', value: 'Da Lat' },
 ];
+
+export const weather_field = [
+  {
+    name: 'Wind',
+    icon: 'weather-windy',
+    extend: 'km/h',
+    key: 'wind_kph',
+  },
+  {
+    name: 'Pressure',
+    icon: 'car-brake-low-pressure',
+    extend: 'mb',
+    key: 'pressure_mb',
+  },
+  {
+    name: 'Humidity',
+    icon: 'water',
+    extend: '%',
+    key: 'humidity',
+  },
+  {
+    name: 'Precipitation',
+    icon: 'water',
+    extend: 'mm',
+    key: 'precip_mm',
+  },
+  {
+    name: 'Clound',
+    icon: 'weather-cloudy',
+    extend: '%',
+    key: 'cloud',
+  },
+  {
+    name: 'UV',
+    icon: 'sun-wireless',
+    extend: '',
+    key: 'uv',
+  },
+];
